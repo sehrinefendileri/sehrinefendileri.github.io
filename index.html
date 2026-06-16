@@ -62,17 +62,18 @@
         }
 
         .server-ip {
-            color: #22c55e;
-            font-size: 20px;
-            font-weight: 700;
+            color: #4ade80; /* Daha parlak bir yeşil kullanıldı */
+            font-size: 22px; /* Yazı boyutu biraz büyütüldü */
+            font-weight: 800; /* Daha kalın yapıldı */
             margin: 0 auto 20px auto;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             display: inline-block;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 6px 16px;
-            border-radius: 6px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.85); /* Arka plan siyahı iyice koyulaştırıldı */
+            padding: 10px 24px; /* Etrafındaki boşluk artırıldı */
+            border-radius: 8px;
+            border: 2px solid rgba(34, 197, 94, 0.6); /* Çerçeve kalınlaştırılıp belirginleştirildi */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); /* Kutunun etrafına karanlık bir gölge eklendi */
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.4); /* IP yazısına hafif fosforlu parlama eklendi */
         }
 
         .buttons { display: flex; flex-direction: column; gap: 14px; }
@@ -212,10 +213,7 @@
             <a class="btn connect-btn" href="steam://connect/95.173.173.81:27015">
                 <span class="btn-title">
                     <i class="fas fa-play"></i>
-                    SUNUCUYA BAĞLAN
-                </span>
-                <span class="btn-desc">
-                    Steam kullanıcıları tek tıkla bağlanabilir
+                    TIKLA SUNUCUYA BAĞLAN
                 </span>
             </a>
 
