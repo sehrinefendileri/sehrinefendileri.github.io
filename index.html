@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- ================= SEO & META ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Şehrin Efendileri, Counter-Strike 1.6 rekabetini en üst seviyede yaşamak isteyen oyuncular için geliştirilmiş resmî istatistik ve topluluk platformudur.">
@@ -11,7 +10,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://sehrinefendileri.com/">
     
-    <!-- Open Graph & Twitter Cards -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ŞEHRİN EFENDİLERİ | CS 1.6 Topluluğu">
     <meta property="og:description" content="Sunucu istatistikleri, sıralamalar, oyuncu karşılaştırmaları ve topluluk platformu.">
@@ -25,16 +23,13 @@
     
     <title>ŞEHRİN EFENDİLERİ | Resmî Web Sitesi</title>
     
-    <!-- ================= PERFORMANCE (Preload) ================= -->
     <link rel="preload" href="banner.jpg" as="image">
 
-    <!-- ================= FAVICON & APPLE TOUCH ICON ================= -->
     <link rel="icon" type="image/jpeg" href="banner.jpg">
     <link rel="apple-touch-icon" href="banner.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- ================= ANALYTICS ================= -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -143,6 +138,14 @@
         .feature-card .card-btn { margin-top: auto; display: inline-block; padding: 12px 25px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--color-white); transition: var(--transition-smooth); width: 100%; }
         .feature-card:hover .card-btn { background: var(--color-primary); border-color: var(--color-primary); }
 
+        /* ================= TIKLANABİLİR KARTLAR (ADMIN VE DUYURU ÖNİZLEME) ================= */
+        .preview-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
         /* ================= SERVER INFO ================= */
         .server-info-bg { background: var(--bg-secondary); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
@@ -156,7 +159,7 @@
         .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid var(--glass-border); background: var(--glass-bg); }
         .social-btn:hover { transform: translateY(-4px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.4); border-color: var(--color-primary); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
 
-        /* ================= ANNOUNCEMENTS ================= */
+        /* ================= ANNOUNCEMENTS & ADMIN PREVIEW ================= */
         .empty-state { text-align: center; padding: 60px 20px; background: var(--glass-bg); border: 1px dashed var(--glass-border); border-radius: 12px; max-width: 600px; margin: 0 auto; }
         .empty-state i { font-size: 32px; color: #444; margin-bottom: 15px; }
         .empty-state p { font-size: 16px; color: #888; font-weight: 500; }
@@ -263,7 +266,6 @@
 </head>
 <body>
 
-    <!-- ================= HEADER ================= -->
     <header id="header">
         <nav class="nav-container">
             <a href="https://sehrinefendileri.com/" class="logo">Şehrin <span>Efendileri</span></a>
@@ -290,7 +292,6 @@
 
     <main>
         
-        <!-- ================= HERO ================= -->
         <section id="hero" class="hero">
             <div class="hero-content hero-fade">
                 <h1>ŞEHRİN EFENDİLERİ</h1>
@@ -308,7 +309,6 @@
             </div>
         </section>
 
-        <!-- ================= İSTATİSTİKLER ================= -->
         <section id="istatistikler">
             <div class="container">
                 <h2 class="section-title fade-in">İstatistik Merkezi</h2>
@@ -339,7 +339,6 @@
             </div>
         </section>
 
-        <!-- ================= OYUNCU ARAÇLARI ================= -->
         <section id="oyuncu-araclari" style="padding-top: 20px;">
             <div class="container">
                 <h2 class="section-title fade-in">Oyuncu Araçları</h2>
@@ -363,7 +362,6 @@
             </div>
         </section>
 
-        <!-- ================= SUNUCU BİLGİLERİ ================= -->
         <section id="sunucu-bilgileri" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Sunucu Bilgileri</h2>
@@ -397,21 +395,20 @@
             </div>
         </section>
 
-        <!-- ================= ADMIN EKİBİ ================= -->
         <section id="admin-ekibi">
             <div class="container">
                 <h2 class="section-title fade-in">Admin Ekibi</h2>
                 
                 <div style="max-width: 400px; margin: 0 auto 30px auto;">
-                    <div class="feature-card fade-in delay-1">
+                    <a href="adminler.html" class="feature-card preview-card-link fade-in delay-1">
                         <i class="fas fa-user-shield"></i>
                         <h3>Admin Ekibi</h3>
                         <p style="margin-bottom: 0;">Admin kadromuzu görüntüleyebilirsiniz.</p>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="all-announcements-btn-container fade-in delay-2">
-                    <a href="#" class="btn-all-announcements">
+                    <a href="adminler.html" class="btn-all-announcements">
                         Tüm Admin Ekibini Gör
                     </a>
                 </div>
@@ -419,7 +416,6 @@
             </div>
         </section>
 
-        <!-- ================= TOPLULUK ================= -->
         <section id="topluluk" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Topluluğumuza Katıl</h2>
@@ -437,7 +433,6 @@
             </div>
         </section>
 
-        <!-- ================= DUYURULAR ================= -->
         <section id="duyurular">
             <div class="container">
                 <h2 class="section-title fade-in">Duyurular</h2>
@@ -459,7 +454,6 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
@@ -474,7 +468,6 @@
         </div>
     </footer>
 
-    <!-- ================= SCRIPT ================= -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
