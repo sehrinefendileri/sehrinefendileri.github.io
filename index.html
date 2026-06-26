@@ -1,216 +1,40 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- ================= SEO & META ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ŞEHRİN EFENDİLERİ</title>
+    <meta name="description" content="Şehrin Efendileri, Counter-Strike 1.6 rekabetini en üst seviyede yaşamak isteyen oyuncular için geliştirilmiş resmî istatistik ve topluluk platformudur.">
+    <meta name="theme-color" content="#050505">
+    <meta property="og:site_name" content="ŞEHRİN EFENDİLERİ">
+<meta property="og:locale" content="tr_TR">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sehrinefendileri.com/">
+    
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ŞEHRİN EFENDİLERİ | CS 1.6 Topluluğu">
+    <meta property="og:description" content="Sunucu istatistikleri, sıralamalar, oyuncu karşılaştırmaları ve topluluk platformu.">
+    <meta property="og:image" content="https://sehrinefendileri.com/banner.jpg">
+    <meta property="og:url" content="https://sehrinefendileri.com/">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ŞEHRİN EFENDİLERİ | CS 1.6 Topluluğu">
+    <meta name="twitter:description" content="Sunucu istatistikleri, sıralamalar, oyuncu karşılaştırmaları ve topluluk platformu.">
+    <meta name="twitter:image" content="https://sehrinefendileri.com/banner.jpg">
+    
+    <title>ŞEHRİN EFENDİLERİ | Resmî Web Sitesi</title>
+    
+    <!-- ================= PERFORMANCE (Preload) ================= -->
+    <link rel="preload" href="banner.jpg" as="image">
+
+    <!-- ================= FAVICON & APPLE TOUCH ICON ================= -->
     <link rel="icon" type="image/jpeg" href="banner.jpg">
+    <link rel="apple-touch-icon" href="banner.jpg">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: #000; color: white; min-height: 100vh; overflow-x: hidden; }
-
-        .hero {
-            min-height: 100vh; /* height yerine min-height yapıldı */
-            width: 100%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            text-align: center;
-            background: url("banner.jpg") center/cover no-repeat;
-            position: relative;
-            padding-top: 70px;
-            padding-bottom: 50px; /* Alttan taşma durumunda footer'a nefes aldırmak için eklendi */
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .hero-content { position: relative; z-index: 2; width: 90%; max-width: 450px; }
-
-        .hero h1 {
-            font-size: clamp(28px, 8vw, 48px);
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-        }
-
-        .hero h1::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: #3b82f6;
-            margin: 15px auto 0;
-            opacity: 0.8;
-        }
-
-        .subtitle {
-            color: #fff;
-            font-size: 18px;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            opacity: 0.9;
-        }
-
-        .server-ip {
-            color: #4ade80;
-            font-size: 22px;
-            font-weight: 800;
-            margin: 0 auto 20px auto;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 10px 24px;
-            border-radius: 8px;
-            border: 2px solid rgba(34, 197, 94, 0.6);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
-            text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
-        }
-
-        .buttons { display: flex; flex-direction: column; gap: 14px; }
-
-        .btn {
-            width: 100%;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .btn-title {
-            font-size: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-desc {
-            font-size: 13.5px;
-            opacity: 1;
-            margin-top: 6px;
-            color: rgba(255,255,255,0.85);
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-
-        .connect-btn {
-            background: linear-gradient(135deg, #15803d, #22c55e);
-            color: white;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
-        }
-
-        .connect-btn:hover {
-            box-shadow: 0 0 25px rgba(34, 197, 94, 0.6);
-        }
-
-        .rank-weekly {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: white;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
-        }
-
-        .rank-general {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: #f8fafc;
-            border: 1px solid #334155;
-            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.4);
-        }
-
-        .rank-archive {
-            background: rgba(0, 0, 0, 0.6);
-            color: #facc15;
-            border: 1px solid rgba(250, 204, 21, 0.5);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .rank-archive .btn-desc { color: #facc15; opacity: 0.7; }
-
-        .rank-archive:hover {
-            border-color: #facc15;
-            background: rgba(250, 204, 21, 0.05);
-        }
-
-        .rank-player-card {
-            background: linear-gradient(135deg, #450a0a, #7f1d1d);
-            color: #e5e7eb;
-            border: 1px solid rgba(229, 231, 235, 0.3);
-            margin-top: 5px;
-            box-shadow: 0 4px 20px rgba(127, 29, 29, 0.4);
-        }
-
-        .rank-player-card .btn-desc {
-            color: #d1d5db;
-            opacity: 0.8;
-        }
-
-        .rank-player-card:hover {
-            border-color: #f3f4f6;
-            box-shadow: 0 0 25px rgba(185, 28, 28, 0.5);
-        }
-
-        .rank-compare {
-            background: linear-gradient(135deg, #5b21b6, #7c3aed);
-            color: white;
-            border: 1px solid rgba(167, 139, 250, 0.45);
-            box-shadow: 0 4px 20px rgba(91, 33, 182, 0.3);
-        }
-
-        .rank-compare .btn-desc {
-            color: #ede9fe;
-        }
-
-        .rank-compare:hover {
-            border-color: #c4b5fd;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.65);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            z-index: 2;
-        }
-
-        .buttons:hover .btn:not(:hover) {
-            opacity: 0.6;
-            transform: scale(0.98);
-            filter: grayscale(20%);
-        }
-
-        .footer-text {
-            margin-top: 50px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 2px;
-            font-weight: 500;
-            text-transform: uppercase;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .hero { padding-top: 50px; }
-            .subtitle { font-size: 16px; }
-            .server-ip { font-size: 16px; }
-        }
-    </style>
+    
+    <!-- ================= ANALYTICS ================= -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -218,60 +42,407 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "x82qle3qig");
     </script>
+
+    <style>
+        /* ================= ORTAK DEĞİŞKENLER ================= */
+        :root {
+            --bg-main: #050505;
+            --bg-secondary: #111111;
+            --color-primary: #7f1d1d; /* Bordo */
+            --color-primary-hover: #991b1b;
+            --color-accent: #ef4444; /* Kırmızı */
+            --color-silver: #d1d5db; /* Gri */
+            --color-white: #ffffff;
+            --glass-bg: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ================= GENEL SIFIRLAMALAR ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg-main); color: var(--color-silver); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ================= TYPOGRAPHY ================= */
+        h1, h2, h3 { color: var(--color-white); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .section-title { text-align: center; font-size: clamp(24px, 5vw, 36px); margin-bottom: 50px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--color-primary); margin: 15px auto 0; border-radius: 2px; }
+
+        /* ================= LAYOUT ================= */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        section { padding: 80px 0; }
+
+        /* ================= HEADER ================= */
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); transition: var(--transition-smooth); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; width: 90%; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 20px; font-weight: 900; color: var(--color-white); letter-spacing: 3px; text-transform: uppercase; }
+        .logo span { color: var(--color-primary); }
+        
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-silver); transition: var(--transition-smooth); position: relative; }
+        .nav-links a:hover { color: var(--color-white); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: var(--transition-smooth); }
+        .nav-links a:hover::after { width: 100%; }
+        .menu-toggle { display: none; font-size: 24px; color: var(--color-white); cursor: pointer; }
+
+        /* Header Hızlı Bağlan Butonu */
+        .header-btn {
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
+            color: var(--color-white);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,100,100,0.2);
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+        }
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.5);
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+        }
+
+        /* ================= HERO ================= */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: url("banner.jpg") center/cover no-repeat; position: relative; padding-top: 70px; margin-top: 0; }
+        .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(5,5,5,1)); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px; }
+        
+        .hero-fade { animation: heroFadeIn 1.2s ease forwards; }
+        @keyframes heroFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero h1 { font-size: clamp(32px, 8vw, 64px); letter-spacing: 6px; margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+        .hero-desc { font-size: clamp(15px, 3.5vw, 18px); color: var(--color-silver); margin-bottom: 40px; font-weight: 400; letter-spacing: 1px; }
+        
+        .server-ip-box { display: inline-flex; align-items: center; gap: 15px; background: rgba(0, 0, 0, 0.6); border: 1px solid var(--glass-border); padding: 15px 30px; border-radius: 50px; margin-bottom: 40px; backdrop-filter: blur(5px); }
+        .server-ip-box i { color: var(--color-accent); font-size: 20px; }
+        .server-ip-box span { font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; }
+
+        .btn-connect { display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, var(--color-primary), #450a0a); color: var(--color-white); padding: 18px 45px; border-radius: 8px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,100,100,0.2); transition: var(--transition-smooth); }
+        .btn-connect:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.6); background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); }
+
+        /* ================= KARTLAR ================= */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 40px 30px; text-align: center; backdrop-filter: blur(10px); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-primary); transform: scaleX(0); transition: var(--transition-smooth); transform-origin: left; }
+        .feature-card:hover { transform: translateY(-8px); border-color: var(--color-primary); box-shadow: 0 0 25px rgba(153, 27, 27, 0.3); }
+        .feature-card:hover::before { transform: scaleX(1); }
+        
+        .feature-card i { font-size: 40px; color: var(--color-accent); margin-bottom: 20px; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 15px; }
+        .feature-card p { font-size: 14px; color: var(--color-silver); margin-bottom: 25px; flex-grow: 1; }
+        .feature-card .card-btn { margin-top: auto; display: inline-block; padding: 12px 25px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--color-white); transition: var(--transition-smooth); width: 100%; }
+        .feature-card:hover .card-btn { background: var(--color-primary); border-color: var(--color-primary); }
+
+        /* ================= SERVER INFO ================= */
+        .server-info-bg { background: var(--bg-secondary); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .info-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 30px; background: var(--bg-main); border: 1px solid var(--glass-border); border-radius: 12px; }
+        .info-item i { font-size: 30px; color: var(--color-silver); margin-bottom: 15px; }
+        .info-item span.label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
+        .info-item span.value { font-size: 18px; font-weight: 700; color: var(--color-white); }
+
+        /* ================= COMMUNITY ================= */
+        .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid var(--glass-border); background: var(--glass-bg); }
+        .social-btn:hover { transform: translateY(-4px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.4); border-color: var(--color-primary); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
+
+        /* ================= ANNOUNCEMENTS ================= */
+        .empty-state { text-align: center; padding: 60px 20px; background: var(--glass-bg); border: 1px dashed var(--glass-border); border-radius: 12px; max-width: 600px; margin: 0 auto; }
+        .empty-state i { font-size: 32px; color: #444; margin-bottom: 15px; }
+        .empty-state p { font-size: 16px; color: #888; font-weight: 500; }
+
+        /* ================= FOOTER ================= */
+        footer { background: #000; padding: 40px 0 20px 0; text-align: center; border-top: 1px solid var(--glass-border); }
+        .footer-logo { font-size: 18px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; margin-bottom: 25px; }
+        .footer-logo span { color: var(--color-primary); }
+        
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 25px; }
+        .footer-links span, .footer-links a { font-size: 13px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition-smooth); }
+        .footer-links a:hover { color: var(--color-white); }
+
+        .footer-copyright { font-size: 12px; color: #555; letter-spacing: 1px; border-top: 1px solid #111; padding-top: 20px; }
+
+        /* ================= ANIMATION & RESPONSIVE ================= */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            .nav-right { gap: 12px; }
+            .header-btn { padding: 6px 10px; font-size: 11px; letter-spacing: 0.5px; }
+            .nav-links { position: absolute; top: 70px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .nav-links a { display: block; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .nav-links a::after { display: none; }
+            .menu-toggle { display: block; }
+            
+            .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; }
+            .btn-connect { padding: 15px 30px; font-size: 16px; }
+            section { padding: 60px 0; }
+            
+            .footer-links { flex-direction: column; gap: 10px; }
+        }
+    </style>
 </head>
 <body>
 
-<section class="hero">
-    <div class="hero-content">
+    <!-- ================= HEADER ================= -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="https://sehrinefendileri.com/" class="logo">Şehrin <span>Efendileri</span></a>
+            
+            <div class="nav-right">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Ana Sayfa</a></li>
+                    <li><a href="#istatistikler">İstatistikler</a></li>
+                    <li><a href="#oyuncu-araclari">Oyuncu Araçları</a></li>
+                    <li><a href="#sunucu-bilgileri">Sunucu</a></li>
+                    <li><a href="#topluluk">Topluluk</a></li>
+                    <li><a href="#duyurular">Duyurular</a></li>
+                </ul>
+                
+                <a href="steam://connect/95.173.173.81:27015" class="header-btn">SUNUCUYA BAĞLAN</a>
+                
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        <h1>ŞEHRİN EFENDİLERİ</h1>
+    <main>
+        
+        <!-- ================= HERO ================= -->
+        <section id="hero" class="hero">
+            <div class="hero-content hero-fade">
+                <h1>ŞEHRİN EFENDİLERİ</h1>
+                <p class="hero-desc">Counter-Strike 1.6 sunucumuzun tüm sıralamalarını, oyuncu kartlarını ve istatistiklerini tek merkezden takip edin.</p>
+                
+                <div class="server-ip-box">
+                    <i class="fas fa-server"></i>
+                    <span>95.173.173.81:27015</span>
+                </div>
+                <br>
+                <a href="steam://connect/95.173.173.81:27015" class="btn-connect">
+                    <i class="fas fa-play"></i> HEMEN BAĞLAN
+                </a>
+            </div>
+        </section>
 
-        <p class="subtitle">Sunucunun tüm istatistikleri burada.</p>
+        <!-- ================= İSTATİSTİKLER ================= -->
+        <section id="istatistikler">
+            <div class="container">
+                <h2 class="section-title fade-in">İstatistik Merkezi</h2>
+                <div class="features-grid">
+                    
+                    <div class="feature-card fade-in delay-1">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Haftalık Sıralama</h3>
+                        <p>Güncel haftanın en iyi oyuncularını ve istatistiklerini incele.</p>
+                        <a href="https://panel25.oyunyoneticisi.com/rank/rank_all.php?ip=95.173.173.81" target="_blank" rel="noopener noreferrer" class="card-btn">Sıralamayı Aç</a>
+                    </div>
 
-        <div class="server-ip">
-            IP: 95.173.173.81:27015
+                    <div class="feature-card fade-in delay-2">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Genel Sıralama</h3>
+                        <p>Sunucunun tüm zamanlara ait genel puan ve öldürme tablosu.</p>
+                        <a href="https://genelsiralama.sehrinefendileri.com/" target="_blank" rel="noopener noreferrer" class="card-btn">Tabloyu Gör</a>
+                    </div>
+
+                    <div class="feature-card fade-in delay-3">
+                        <i class="fas fa-history"></i>
+                        <h3>Geçmiş Haftalar</h3>
+                        <p>Önceki haftaların şampiyonlarını ve arşivlenmiş verileri gör.</p>
+                        <a href="https://gecmishaftalar.sehrinefendileri.com/" target="_blank" rel="noopener noreferrer" class="card-btn">Arşive Git</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= OYUNCU ARAÇLARI ================= -->
+        <section id="oyuncu-araclari" style="padding-top: 20px;">
+            <div class="container">
+                <h2 class="section-title fade-in">Oyuncu Araçları</h2>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 800px; margin: 0 auto;">
+                    
+                    <div class="feature-card fade-in delay-1">
+                        <i class="fas fa-id-card"></i>
+                        <h3>Oyuncu Kartı</h3>
+                        <p>Kendi istatistiklerini detaylı gör ve diğer oyunculara meydan oku.</p>
+                        <a href="https://sehrinefendileri.com/sehrin-efendileri-oyuncu-karti/" target="_blank" rel="noopener noreferrer" class="card-btn">Kartı Sorgula</a>
+                    </div>
+
+                    <div class="feature-card fade-in delay-2">
+                        <i class="fas fa-people-arrows"></i>
+                        <h3>Karşılaştır</h3>
+                        <p>Kimin daha iyi olduğunu öğrenmek için iki oyuncuyu karşılaştır.</p>
+                        <a href="https://sehrinefendileri.com/sehrin-efendileri-oyuncu-karsilastir/" target="_blank" rel="noopener noreferrer" class="card-btn">Karşılaştırma Yap</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SUNUCU BİLGİLERİ ================= -->
+        <section id="sunucu-bilgileri" class="server-info-bg">
+            <div class="container">
+                <h2 class="section-title fade-in">Sunucu Bilgileri</h2>
+                <div class="info-grid">
+                    
+                    <div class="info-item fade-in delay-1">
+                        <i class="fas fa-network-wired"></i>
+                        <span class="label">Sunucu IP</span>
+                        <span class="value">95.173.173.81:27015</span>
+                    </div>
+                    
+                    <div class="info-item fade-in delay-2">
+                        <i class="fas fa-gamepad"></i>
+                        <span class="label">Oyun</span>
+                        <span class="value">Counter-Strike 1.6</span>
+                    </div>
+                    
+                    <div class="info-item fade-in delay-3">
+                        <i class="fas fa-users"></i>
+                        <span class="label">Sunucu Türü</span>
+                        <span class="value">Topluluk Sunucusu</span>
+                    </div>
+                    
+                    <div class="info-item fade-in delay-1">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="label">Durum</span>
+                        <span class="value" style="color: #4ade80;">7/24 Aktif</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TOPLULUK ================= -->
+        <section id="topluluk">
+            <div class="container">
+                <h2 class="section-title fade-in">Topluluğumuza Katıl</h2>
+                <div class="community-socials fade-in">
+                    
+                    <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fab fa-instagram"></i> Instagram Hesabımız
+                    </a>
+
+                    <a href="https://discord.gg/8t8bNDrCZg" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fab fa-discord"></i> Discord Sunucumuz
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DUYURULAR ================= -->
+        <section id="duyurular" class="server-info-bg">
+            <div class="container">
+                <h2 class="section-title fade-in">Duyurular</h2>
+                
+                <div class="empty-state fade-in" id="announcements-container">
+                    <i class="far fa-bell-slash"></i>
+                    <p>İlk duyurular yakında burada yayınlanacaktır.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
+            
+            <div class="footer-links">
+                <a href="#hero">Ana Sayfa</a>
+                <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://discord.gg/8t8bNDrCZg" target="_blank" rel="noopener noreferrer">Discord</a>
+            </div>
+
+            <p class="footer-copyright">© <span id="year"></span> ŞEHRİN EFENDİLERİ</p>
         </div>
+    </footer>
 
-        <div class="buttons">
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Yılı Dinamik Olarak Güncelle
+            document.getElementById("year").textContent = new Date().getFullYear();
+            
+            // 1. Mobil Menü Kontrolü
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if(navLinks.classList.contains('active')){
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
 
-            <a class="btn connect-btn" href="steam://connect/95.173.173.81:27015">
-                <span class="btn-title">
-                    <i class="fas fa-play"></i>
-                    TIKLA SUNUCUYA BAĞLAN
-                </span>
-            </a>
+            // Mobil menü link tıklaması ile kapanma durumu
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
 
-            <a class="btn rank-weekly" href="https://panel25.oyunyoneticisi.com/rank/rank_all.php?ip=95.173.173.81" target="_blank">
-                <span class="btn-title"><i class="fas fa-bolt"></i> HAFTALIK SIRALAMA</span>
-                <span class="btn-desc">Güncel haftanın sıralama verileri</span>
-            </a>
+            // 2. Sayfa İçi Scroll Animasyonları (Intersection Observer)
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
 
-            <a class="btn rank-general" href="https://genelsiralama.sehrinefendileri.com" target="_blank">
-                <span class="btn-title"><i class="fas fa-chart-line"></i> GENEL SIRALAMA</span>
-                <span class="btn-desc">Sunucu genel sıralaması</span>
-            </a>
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
 
-            <a class="btn rank-archive" href="https://gecmishaftalar.sehrinefendileri.com" target="_blank">
-                <span class="btn-title"><i class="fas fa-history"></i> GEÇMİŞ HAFTALAR</span>
-                <span class="btn-desc">Geçmiş haftaların sıralamaları</span>
-            </a>
+            fadeElements.forEach(el => {
+                fadeObserver.observe(el);
+            });
 
-            <a class="btn rank-player-card" href="https://sehrinefendileri.github.io/sehrin-efendileri-oyuncu-karti/" target="_blank">
-                <span class="btn-title"><i class="fas fa-id-card"></i> OYUNCU KARTI SORGULA</span>
-                <span class="btn-desc">İstatistiklerini gör ve meydan oku!</span>
-            </a>
+            // 3. Header Arka Plan Efekti (Sticky Header Şeffaflığı)
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(0, 0, 0, 0.98)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.8)';
+                } else {
+                    header.style.background = 'rgba(5, 5, 5, 0.85)';
+                    header.style.boxShadow = 'none';
+                }
+            });
 
-            <a class="btn rank-compare" href="https://sehrinefendileri.github.io/sehrin-efendileri-oyuncu-karsilastir/" target="_blank">
-                <span class="btn-title"><i class="fas fa-people-arrows"></i> OYUNCU KARŞILAŞTIR</span>
-                <span class="btn-desc">İki oyuncunun istatistiklerini karşılaştır</span>
-            </a>
-
-        </div>
-
-        <p class="footer-text">© 2026 Şehrin Efendileri</p>
-
-    </div>
-</section>
-
+        });
+    </script>
 </body>
 </html>
