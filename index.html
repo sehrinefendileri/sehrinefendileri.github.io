@@ -11,7 +11,7 @@
         body { background: #000; color: white; min-height: 100vh; overflow-x: hidden; }
 
         .hero {
-            height: 100vh;
+            min-height: 100vh; /* height yerine min-height yapıldı */
             width: 100%;
             display: flex;
             align-items: flex-start;
@@ -20,6 +20,7 @@
             background: url("banner.jpg") center/cover no-repeat;
             position: relative;
             padding-top: 70px;
+            padding-bottom: 50px; /* Alttan taşma durumunda footer'a nefes aldırmak için eklendi */
         }
 
         .hero::before {
