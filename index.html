@@ -125,6 +125,25 @@
         /* Cihaz Bağlantı Notu */
         .connect-note { font-size: 12px; color: #888; margin-top: 15px; font-weight: 500; }
 
+        /* Kaydırma Göstergesi (Masaüstünde gizli) */
+        .scroll-indicator {
+            display: none;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 24px;
+            z-index: 10;
+            animation: bounceUpDown 1.5s infinite ease-in-out;
+            text-decoration: none;
+        }
+
+        @keyframes bounceUpDown {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
         /* ================= KARTLAR ================= */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 40px 30px; text-align: center; backdrop-filter: blur(10px); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; }
@@ -257,10 +276,21 @@
             .menu-toggle { display: block; }
             
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; }
-            .btn-connect { padding: 15px 30px; font-size: 16px; }
             section { padding: 60px 0; }
             
             .footer-links { flex-direction: column; gap: 10px; }
+
+            /* Mobilde gizlenecek PC butonları ve notu */
+            .header-btn, 
+            .btn-connect, 
+            .connect-note { 
+                display: none !important; 
+            }
+
+            /* Mobilde gösterilecek kaydırma göstergesi */
+            .scroll-indicator {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -268,7 +298,7 @@
 
     <header id="header">
         <nav class="nav-container">
-            <a href="https://sehrinefendileri.com/" class="logo">Şehrin <span>Efendileri</span></a>
+            <a href="/" class="logo">Şehrin <span>Efendileri</span></a>
             
             <div class="nav-right">
                 <ul class="nav-links" id="nav-links">
@@ -307,6 +337,10 @@
                 </a>
                 <p class="connect-note">Not: "Sunucuya Bağlan" bağlantısı yalnızca bilgisayarlarda çalışmaktadır.</p>
             </div>
+            
+            <a href="#istatistikler" class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </section>
 
         <section id="istatistikler">
