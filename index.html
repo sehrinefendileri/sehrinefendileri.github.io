@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- ================= SEO & META ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Şehrin Efendileri, Counter-Strike 1.6 rekabetini en üst seviyede yaşamak isteyen oyuncular için geliştirilmiş resmî istatistik ve topluluk platformudur.">
@@ -10,6 +11,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://sehrinefendileri.com/">
     
+    <!-- Open Graph & Twitter Cards -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ŞEHRİN EFENDİLERİ | CS 1.6 Topluluğu">
     <meta property="og:description" content="Sunucu istatistikleri, sıralamalar, oyuncu karşılaştırmaları ve topluluk platformu.">
@@ -23,13 +25,16 @@
     
     <title>ŞEHRİN EFENDİLERİ | Resmî Web Sitesi</title>
     
+    <!-- ================= PERFORMANCE (Preload) ================= -->
     <link rel="preload" href="banner.jpg" as="image">
 
+    <!-- ================= FAVICON & APPLE TOUCH ICON ================= -->
     <link rel="icon" type="image/jpeg" href="banner.jpg">
     <link rel="apple-touch-icon" href="banner.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- ================= ANALYTICS ================= -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -69,34 +74,52 @@
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         section { padding: 80px 0; }
 
-        /* ================= HEADER ================= */
+        /* ================= HEADER (NAVBAR) ================= */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); transition: var(--transition-smooth); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; width: 90%; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 20px; font-weight: 900; color: var(--color-white); letter-spacing: 3px; text-transform: uppercase; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        .logo { font-size: 22px; font-weight: 900; color: var(--color-white); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; line-height: 1; }
         .logo span { color: var(--color-primary); }
         
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--color-silver); transition: var(--transition-smooth); position: relative; }
+        .nav-right { display: flex; align-items: center; gap: clamp(15px, 2vw, 30px); }
+        .nav-links { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 25px); }
+        .nav-links li { display: flex; align-items: center; }
+        .nav-links a { 
+            font-size: 13px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--color-silver); 
+            transition: var(--transition-smooth); 
+            position: relative; 
+            white-space: nowrap; 
+            padding: 8px 0; 
+            display: flex; 
+            align-items: center; 
+            line-height: 1; 
+        }
         .nav-links a:hover { color: var(--color-white); }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: var(--transition-smooth); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: var(--transition-smooth); }
         .nav-links a:hover::after { width: 100%; }
-        .menu-toggle { display: none; font-size: 24px; color: var(--color-white); cursor: pointer; }
+        
+        .menu-toggle { display: none; font-size: 24px; color: var(--color-white); cursor: pointer; line-height: 1; }
 
         /* Header Hızlı Bağlan Butonu */
         .header-btn {
             background: linear-gradient(135deg, var(--color-primary), #450a0a);
             color: var(--color-white);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 6px;
-            font-size: 12px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: 1px solid rgba(255,100,100,0.2);
             transition: var(--transition-smooth);
             display: inline-flex;
             align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
         .header-btn:hover {
             transform: translateY(-2px);
@@ -105,7 +128,7 @@
         }
 
         /* ================= HERO ================= */
-        .hero { min-height: 100vh; min-height: 100svh; min-height: 100dvh; display: flex; align-items: center; justify-content: center; text-align: center; background: url("banner.jpg") center/cover no-repeat; position: relative; padding-top: 70px; margin-top: 0; }
+        .hero { min-height: 100vh; min-height: 100svh; min-height: 100dvh; display: flex; align-items: center; justify-content: center; text-align: center; background: url("banner.jpg") center/cover no-repeat; position: relative; padding-top: 75px; margin-top: 0; }
         .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(5,5,5,1)); z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px; }
         
@@ -122,9 +145,6 @@
         .btn-connect { display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, var(--color-primary), #450a0a); color: var(--color-white); padding: 18px 45px; border-radius: 8px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,100,100,0.2); transition: var(--transition-smooth); }
         .btn-connect:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.6); background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); }
         
-        /* Cihaz Bağlantı Notu */
-        .connect-note { font-size: 12px; color: #888; margin-top: 15px; font-weight: 500; }
-
         /* Kaydırma Göstergesi (Masaüstünde gizli) */
         .scroll-indicator {
             display: none;
@@ -269,22 +289,21 @@
         @media (max-width: 768px) {
             .nav-right { gap: 12px; }
             .header-btn { padding: 6px 10px; font-size: 11px; letter-spacing: 0.5px; }
-            .nav-links { position: absolute; top: 70px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); }
+            .nav-links { position: absolute; top: 75px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); align-items: stretch; }
             .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            .nav-links a { display: block; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .nav-links li { display: block; width: 100%; }
+            .nav-links a { display: block; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); white-space: normal; line-height: 1.4; }
             .nav-links a::after { display: none; }
             .menu-toggle { display: block; }
             
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; }
-            .btn-connect { padding: 15px 30px; font-size: 16px; }
             section { padding: 60px 0; }
             
             .footer-links { flex-direction: column; gap: 10px; }
 
-            /* Mobilde gizlenecek PC butonları ve notu */
+            /* Mobilde gizlenecek PC butonları */
             .header-btn, 
-            .btn-connect, 
-            .connect-note { 
+            .btn-connect { 
                 display: none !important; 
             }
 
@@ -297,6 +316,7 @@
 </head>
 <body>
 
+    <!-- ================= HEADER ================= -->
     <header id="header">
         <nav class="nav-container">
             <a href="/" class="logo">Şehrin <span>Efendileri</span></a>
@@ -323,6 +343,7 @@
 
     <main>
         
+        <!-- ================= HERO ================= -->
         <section id="hero" class="hero">
             <div class="hero-content hero-fade">
                 <h1>ŞEHRİN EFENDİLERİ</h1>
@@ -336,14 +357,15 @@
                 <a href="steam://connect/95.173.173.81:27015" class="btn-connect">
                     <i class="fas fa-play"></i> HEMEN BAĞLAN
                 </a>
-                <p class="connect-note">Not: "Sunucuya Bağlan" bağlantısı yalnızca bilgisayarlarda çalışmaktadır.</p>
             </div>
             
+            <!-- Mobilde gösterilecek aşağı kaydırma oku -->
             <a href="#istatistikler" class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </section>
 
+        <!-- ================= İSTATİSTİKLER ================= -->
         <section id="istatistikler">
             <div class="container">
                 <h2 class="section-title fade-in">İstatistik Merkezi</h2>
@@ -374,6 +396,7 @@
             </div>
         </section>
 
+        <!-- ================= OYUNCU ARAÇLARI ================= -->
         <section id="oyuncu-araclari" style="padding-top: 20px;">
             <div class="container">
                 <h2 class="section-title fade-in">Oyuncu Araçları</h2>
@@ -397,6 +420,7 @@
             </div>
         </section>
 
+        <!-- ================= SUNUCU BİLGİLERİ ================= -->
         <section id="sunucu-bilgileri" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Sunucu Bilgileri</h2>
@@ -430,6 +454,7 @@
             </div>
         </section>
 
+        <!-- ================= ADMIN EKİBİ ================= -->
         <section id="admin-ekibi">
             <div class="container">
                 <h2 class="section-title fade-in">Admin Ekibi</h2>
@@ -447,6 +472,7 @@
             </div>
         </section>
 
+        <!-- ================= TOPLULUK ================= -->
         <section id="topluluk" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Topluluğumuza Katıl</h2>
@@ -464,6 +490,7 @@
             </div>
         </section>
 
+        <!-- ================= DUYURULAR ================= -->
         <section id="duyurular">
             <div class="container">
                 <h2 class="section-title fade-in">Duyurular</h2>
@@ -485,6 +512,7 @@
 
     </main>
 
+    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
@@ -499,6 +527,7 @@
         </div>
     </footer>
 
+    <!-- ================= SCRIPT ================= -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
