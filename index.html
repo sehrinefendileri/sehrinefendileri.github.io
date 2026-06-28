@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- ================= SEO & META ================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Şehrin Efendileri, Counter-Strike 1.6 rekabetini en üst seviyede yaşamak isteyen oyuncular için geliştirilmiş resmî istatistik ve topluluk platformudur.">
@@ -11,7 +10,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://sehrinefendileri.com/">
     
-    <!-- Open Graph & Twitter Cards -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ŞEHRİN EFENDİLERİ | CS 1.6 Topluluğu">
     <meta property="og:description" content="Sunucu istatistikleri, sıralamalar, oyuncu karşılaştırmaları ve topluluk platformu.">
@@ -25,16 +23,13 @@
     
     <title>ŞEHRİN EFENDİLERİ | Resmî Web Sitesi</title>
     
-    <!-- ================= PERFORMANCE (Preload) ================= -->
     <link rel="preload" href="banner.jpg" as="image">
 
-    <!-- ================= FAVICON & APPLE TOUCH ICON ================= -->
     <link rel="icon" type="image/jpeg" href="banner.jpg">
     <link rel="apple-touch-icon" href="banner.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- ================= ANALYTICS ================= -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -60,7 +55,7 @@
 
         /* ================= GENEL SIFIRLAMALAR ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { background: var(--bg-main); color: var(--color-silver); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -309,24 +304,103 @@
                 display: none !important; 
             }
         }
+
+        /* ================= YENİ EKLENEN ÖZELLİKLER (SCROLL, PROGRESS BAR, SCROLL TO TOP, SCROLLSPY) ================= */
+
+        /* Temaya Bütünleşik Kaydırma Çubuğu */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-hover);
+        }
+
+        /* Sayfa İlerleme Çubuğu */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1001; /* Header'dan (1000) yüksek olmalı */
+        }
+        .scroll-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--color-accent); /* Kırmızı renk */
+            box-shadow: 0 0 10px var(--color-accent);
+            transition: width 0.1s ease-out;
+        }
+
+        /* Yukarı Çık Butonu */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
+            color: var(--color-white);
+            border: 1px solid rgba(255,100,100,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(153, 27, 27, 0.5);
+        }
+
+        /* Akıllı Menü Vurgusu İçin Ek Sınıf */
+        .nav-links a.active {
+            color: var(--color-white);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
     <header id="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">Şehrin <span>Efendileri</span></a>
             
             <div class="nav-right">
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="#hero">Ana Sayfa</a></li>
                     <li><a href="#istatistikler">İstatistikler</a></li>
                     <li><a href="#oyuncu-araclari">Oyuncu Araçları</a></li>
                     <li><a href="#sunucu-bilgileri">Sunucu</a></li>
                     <li><a href="#admin-ekibi">Admin Ekibi</a></li>
+                    <li><a href="#kurallar">Kurallar</a></li>
                     <li><a href="#topluluk">Topluluk</a></li>
-                    <li><a href="kurallar.html">Kurallar</a></li>
                     <li><a href="#duyurular">Duyurular</a></li>
                 </ul>
                 
@@ -341,7 +415,6 @@
 
     <main>
         
-        <!-- ================= HERO ================= -->
         <section id="hero" class="hero">
             <div class="hero-content hero-fade">
                 <h1>ŞEHRİN EFENDİLERİ</h1>
@@ -357,13 +430,11 @@
                 </a>
             </div>
             
-            <!-- Aşağı kaydırma oku (Masaüstü ve Mobilde Aktif) -->
             <a href="#istatistikler" class="scroll-indicator">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </section>
 
-        <!-- ================= İSTATİSTİKLER ================= -->
         <section id="istatistikler">
             <div class="container">
                 <h2 class="section-title fade-in">İstatistik Merkezi</h2>
@@ -394,7 +465,6 @@
             </div>
         </section>
 
-        <!-- ================= OYUNCU ARAÇLARI ================= -->
         <section id="oyuncu-araclari" style="padding-top: 20px;">
             <div class="container">
                 <h2 class="section-title fade-in">Oyuncu Araçları</h2>
@@ -418,7 +488,6 @@
             </div>
         </section>
 
-        <!-- ================= SUNUCU BİLGİLERİ ================= -->
         <section id="sunucu-bilgileri" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Sunucu Bilgileri</h2>
@@ -452,7 +521,6 @@
             </div>
         </section>
 
-        <!-- ================= ADMIN EKİBİ ================= -->
         <section id="admin-ekibi">
             <div class="container">
                 <h2 class="section-title fade-in">Admin Ekibi</h2>
@@ -470,7 +538,6 @@
             </div>
         </section>
         
-        <!-- ================= KURALLAR ================= -->
         <section id="kurallar" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Kurallar</h2>
@@ -488,7 +555,6 @@
             </div>
         </section>
 
-        <!-- ================= TOPLULUK ================= -->
         <section id="topluluk">
             <div class="container">
                 <h2 class="section-title fade-in">Topluluğumuza Katıl</h2>
@@ -506,7 +572,6 @@
             </div>
         </section>
 
-        <!-- ================= DUYURULAR ================= -->
         <section id="duyurular" class="server-info-bg">
             <div class="container">
                 <h2 class="section-title fade-in">Duyurular</h2>
@@ -528,13 +593,12 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <div class="container">
             <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
             
             <div class="footer-links">
-                <a href="index.html">Ana Sayfa</a>
+                <a href="#hero">Ana Sayfa</a>
                 <a href="kurallar.html">Kurallar</a>
                 <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="https://discord.gg/8t8bNDrCZg" target="_blank" rel="noopener noreferrer">Discord</a>
@@ -544,7 +608,10 @@
         </div>
     </footer>
 
-    <!-- ================= SCRIPT ================= -->
+    <a href="#" id="scrollToTop" class="scroll-to-top" aria-label="Yukarı Çık">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -608,6 +675,62 @@
                     header.style.background = 'rgba(5, 5, 5, 0.85)';
                     header.style.boxShadow = 'none';
                 }
+            });
+
+            // ================= 4. SAYFA İLERLEME ÇUBUĞU =================
+            const progressBar = document.getElementById('progressBar');
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / scrollHeight) * 100;
+                
+                progressBar.style.width = scrollPercentage + '%';
+            });
+
+            // ================= 1. YUKARI ÇIK BUTONU =================
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    scrollToTopBtn.classList.add('show');
+                } else {
+                    scrollToTopBtn.classList.remove('show');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // ================= 2. AKILLI MENÜ VURGUSU (SCROLLSPY) =================
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    // Header yüksekliğini (75px) hesaba katarak konumu belirle
+                    if (scrollY >= (sectionTop - 85)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    // Eğer href içindeki ID, mevcut section ID'si ile eşleşiyorsa active yap
+                    if (item.getAttribute('href').includes(current) && current !== '') {
+                        item.classList.add('active');
+                    }
+                });
             });
 
         });
