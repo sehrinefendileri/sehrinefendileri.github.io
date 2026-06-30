@@ -733,6 +733,31 @@
                 });
             });
 
+            // ================= 3. ADRES ÇUBUĞUNDA HASH (#) GİZLEME =================
+            
+            // Sayfaya ilk girildiğinde linkte hash varsa (örn: site.com/#kurallar) bunu gizle
+            if (window.location.hash) {
+                setTimeout(() => {
+                    history.replaceState(null, null, window.location.pathname + window.location.search);
+                }, 100);
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // İsteğe bağlı olarak geçmişte veya manuel girişte URL'ye eklendiyse temizler
+                        history.replaceState(null, null, window.location.pathname + window.location.search);
+                    }
+                });
+            });
+
         });
     </script>
 </body>
