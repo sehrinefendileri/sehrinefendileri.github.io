@@ -151,7 +151,7 @@
         .server-ip-box span { font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; }
 
         .btn-connect { display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, var(--color-primary), #450a0a); color: var(--color-white); padding: 18px 45px; border-radius: 8px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,100,100,0.2); transition: var(--transition-smooth); }
-        .btn-connect:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.6); background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); }
+        .btn-connect:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(153, 27, 27, 0.5); background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); }
         
         /* Kaydırma Göstergesi (Hem Masaüstü Hem Mobilde Aktif) */
         .scroll-indicator {
@@ -173,7 +173,7 @@
 
         @keyframes bounceUpDown {
             0%, 100% { transform: translate(-50%, 0); }
-          50% { transform: translate(-50%, 10px); }
+            50% { transform: translate(-50%, 10px); }
         }
 
         /* ================= KARTLAR ================= */
@@ -187,7 +187,7 @@
         .feature-card h3 { font-size: 20px; margin-bottom: 15px; }
         .feature-card p { font-size: 14px; color: var(--color-silver); margin-bottom: 25px; flex-grow: 1; }
         .feature-card .card-btn { margin-top: auto; display: inline-block; padding: 12px 25px; background: linear-gradient(135deg, var(--color-primary), #450a0a); border: 1px solid rgba(255,100,100,0.2); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--color-white); transition: var(--transition-smooth); width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .feature-card:hover .card-btn { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
+        .feature-card:hover .card-btn, .feature-card .card-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
 
         /* ================= TIKLANABİLİR KARTLAR ================= */
         .preview-card-link {
@@ -207,8 +207,8 @@
 
         /* ================= COMMUNITY ================= */
         .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.12); }
-        .social-btn:hover { transform: translateY(-4px); box-shadow: 0 0 20px rgba(153, 27, 27, 0.4); border-color: var(--color-primary); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
+        .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(153, 27, 27, 0.5); background: rgba(15, 15, 15, 0.8); }
+        .social-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
 
         /* ================= ANNOUNCEMENTS & PREVIEW CARDS ================= */
         .empty-state { text-align: center; padding: 60px 20px; background: var(--glass-bg); border: 1px dashed var(--glass-border); border-radius: 12px; max-width: 600px; margin: 0 auto; }
@@ -264,8 +264,8 @@
         .btn-all-announcements {
             display: inline-block;
             padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid rgba(153, 27, 27, 0.5);
             border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
@@ -273,10 +273,10 @@
             transition: var(--transition-smooth);
         }
         .btn-all-announcements:hover {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            border-color: rgba(255,100,100,0.4);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(153, 27, 27, 0.4);
+            box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4);
         }
 
         /* ================= FOOTER ================= */
