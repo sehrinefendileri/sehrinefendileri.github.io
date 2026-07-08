@@ -87,11 +87,9 @@
         /* ================= HEADER ================= */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); transition: var(--transition-smooth); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; width: 90%; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 20px; font-weight: 900; color: var(--color-white); letter-spacing: 3px; text-transform: uppercase; display: flex; align-items: center; line-height: 1; }
-        .logo span { color: var(--color-primary); }
         
-        .nav-right { display: flex; align-items: center; gap: clamp(15px, 2vw, 30px); }
-        .nav-links { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 25px); }
+        .nav-right { width: 100%; display: flex; align-items: center; justify-content: flex-end; gap: clamp(15px, 2vw, 30px); }
+        .nav-links { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 25px); margin-right: auto; }
         .nav-links li { display: flex; align-items: center; }
         .nav-links a { 
             font-size: 13px; 
@@ -205,7 +203,7 @@
         .info-item span.label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
         .info-item span.value { font-size: 18px; font-weight: 700; color: var(--color-white); }
 
-        /* ================= HAKKINDA BÖLÜMÜ (YENİ EKLENEN) ================= */
+        /* ================= HAKKINDA BÖLÜMÜ ================= */
         .about-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -322,7 +320,7 @@
         @media (max-width: 768px) {
             .nav-right { gap: 12px; }
             .header-btn { padding: 6px 10px; font-size: 11px; letter-spacing: 0.5px; }
-            .nav-links { position: absolute; top: 75px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); align-items: stretch; }
+            .nav-links { position: absolute; top: 75px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); align-items: stretch; margin-right: 0; }
             .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
             .nav-links li { display: block; width: 100%; }
             .nav-links a { display: block; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); white-space: normal; line-height: 1.4; }
@@ -430,8 +428,6 @@
 
     <header id="header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">Şehrin <span>Efendileri</span></a>
-            
             <div class="nav-right">
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#hero">Ana Sayfa</a></li>
@@ -442,6 +438,7 @@
                     <li><a href="#kurallar">Kurallar</a></li>
                     <li><a href="#topluluk">Topluluk</a></li>
                     <li><a href="#duyurular">Duyurular</a></li>
+                    <li><a href="#hakkimizda">Hakkımızda</a></li>
                 </ul>
                 
                 <a href="steam://connect/95.173.173.81:27015" class="header-btn">SUNUCUYA BAĞLAN</a>
@@ -561,7 +558,7 @@
             </div>
         </section>
 
-        <section id="hakkinda">
+        <section id="hakkimizda">
             <div class="container">
                 <h2 class="section-title fade-in">ŞEHRİN EFENDİLERİ Hakkında</h2>
                 <div class="about-card fade-in delay-1">
