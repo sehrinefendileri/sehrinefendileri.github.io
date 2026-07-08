@@ -300,14 +300,16 @@
 
         /* ================= FOOTER ================= */
         footer { background: rgba(5, 5, 5, 0.8); padding: 40px 0 20px 0; text-align: center; border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
-        .footer-logo { font-size: 18px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; margin-bottom: 25px; }
+        .footer-logo { font-size: 18px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; margin-bottom: 10px; }
         .footer-logo span { color: var(--color-primary); }
+        .footer-desc { font-size: 14px; color: var(--color-silver); margin-bottom: 25px; font-weight: 400; }
         
         .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 25px; }
         .footer-links span, .footer-links a { font-size: 13px; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition-smooth); }
         .footer-links a:hover { color: var(--color-white); }
 
         .footer-copyright { font-size: 12px; color: #555; letter-spacing: 1px; border-top: 1px solid #111; padding-top: 20px; }
+        .footer-extra-info { font-size: 11px; color: #444; letter-spacing: 0.5px; margin-top: 5px; }
 
         /* ================= ANIMATION & RESPONSIVE ================= */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -645,15 +647,18 @@
     <footer>
         <div class="container">
             <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
+            <p class="footer-desc">Counter-Strike 1.6 topluluğu ve oyuncu platformu.</p>
             
             <div class="footer-links">
                 <a href="#hero">Ana Sayfa</a>
+                <a href="#hakkimizda">Hakkımızda</a>
                 <a href="kurallar.html">Kurallar</a>
-                <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="https://discord.gg/8t8bNDrCZg" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
 
-            <p class="footer-copyright">© <span id="year"></span> ŞEHRİN EFENDİLERİ</p>
+            <p class="footer-copyright">© 2024 - <span id="year"></span> ŞEHRİN EFENDİLERİ</p>
+            <p class="footer-extra-info">08 Nisan 2024'ten beri.</p>
         </div>
     </footer>
 
