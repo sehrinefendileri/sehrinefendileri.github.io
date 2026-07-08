@@ -205,6 +205,27 @@
         .info-item span.label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
         .info-item span.value { font-size: 18px; font-weight: 700; color: var(--color-white); }
 
+        /* ================= HAKKINDA BÖLÜMÜ (YENİ EKLENEN) ================= */
+        .about-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        .about-card p {
+            font-size: 16px;
+            color: var(--color-silver);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+        
         /* ================= COMMUNITY ================= */
         .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(255,100,100,0.2); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
@@ -311,6 +332,10 @@
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; }
             section { padding: 60px 0; }
             
+            /* Hakkında Kartı Mobil Düzeni */
+            .about-card { padding: 25px; }
+            .about-card p { font-size: 15px; }
+
             .footer-links { flex-direction: column; gap: 10px; }
 
             /* Mobilde gizlenecek PC butonları */
@@ -532,6 +557,18 @@
                         <span class="value" style="color: #4ade80;">7/24 Aktif</span>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <section id="hakkinda">
+            <div class="container">
+                <h2 class="section-title fade-in">ŞEHRİN EFENDİLERİ Hakkında</h2>
+                <div class="about-card fade-in delay-1">
+                    <p>ŞEHRİN EFENDİLERİ, 08 Nisan 2024 tarihinde kuruldu.</p>
+                    <p>İlk dönemimizde CS Durağı altyapısı üzerinden oyuncularımızla buluştuk. Zaman içerisinde sunucumuz gelişti ve daha iyi bir oyun deneyimi sunabilmek için altyapı değişikliği yapma kararı aldık.</p>
+                    <p>Bu süreçte CS Durağı'nın CS 1.6 hizmetini sonlandırmasıyla birlikte Eylül 2025 tarihinde OyunYöneticisi altyapısına geçiş yaptık.</p>
+                    <p>O tarihten beri sunucumuz OyunYöneticisi üzerinde aktif olarak devam ediyor. Yeni oyuncularla tanışmaya, mevcut topluluğumuzla birlikte oyunun keyfini çıkarmaya devam ediyoruz.</p>
                 </div>
             </div>
         </section>
