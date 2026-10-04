@@ -154,38 +154,68 @@
         .server-ip-box span { font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; }
 
         .server-status-line {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 14px;
             margin-top: 18px;
-            font-size: 15px;
+            padding: 14px 24px;
+            border: 1px solid rgba(139, 28, 28, 0.55);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.55);
+            box-shadow:
+                0 0 18px rgba(139, 28, 28, 0.18),
+                inset 0 0 18px rgba(255, 255, 255, 0.025);
+            font-size: 17px;
             font-weight: 700;
-            letter-spacing: 0.8px;
-            color: var(--color-silver);
+            letter-spacing: 0.6px;
+            color: #d8d8d8;
+            backdrop-filter: blur(4px);
         }
 
         .server-status-item {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 7px;
         }
 
         .server-status-dot {
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .server-status-online {
             color: #4ade80;
         }
 
+        .server-status-online .server-status-dot {
+            animation: serverOnlinePulse 1.8s ease-in-out infinite;
+            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+        }
+
         .server-status-offline {
             color: #f87171;
         }
 
+        .server-status-offline .server-status-dot {
+            text-shadow: 0 0 8px rgba(248, 113, 113, 0.7);
+        }
+
         .server-status-separator {
-            color: #666;
+            color: #777;
+            font-size: 13px;
+        }
+
+        @keyframes serverOnlinePulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.82);
+            }
         }
         
         .scroll-indicator {
@@ -501,10 +531,12 @@
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; margin-bottom: 0; }
 
             .server-status-line {
-                gap: 7px;
+                gap: 9px;
                 margin-top: 15px;
+                padding: 11px 14px;
                 font-size: 13px;
-                letter-spacing: 0.4px;
+                letter-spacing: 0.3px;
+                border-radius: 12px;
             }
 
             section { padding: 60px 0; }
