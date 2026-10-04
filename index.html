@@ -54,37 +54,32 @@
     </script>
 
     <style>
-        /* ================= ORTAK DEĞİŞKENLER ================= */
         :root {
             --bg-main: #050505;
             --bg-secondary: #111111;
-            --color-primary: #7f1d1d; /* Bordo */
+            --color-primary: #7f1d1d;
             --color-primary-hover: #991b1b;
-            --color-accent: #ef4444; /* Kırmızı */
-            --color-silver: #d1d5db; /* Gri */
+            --color-accent: #ef4444;
+            --color-silver: #d1d5db;
             --color-white: #ffffff;
             --glass-bg: rgba(20, 20, 20, 0.6);
             --glass-border: rgba(255, 255, 255, 0.05);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ================= GENEL SIFIRLAMALAR ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url("banner.jpg") center/cover fixed no-repeat; color: var(--color-silver); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* ================= TYPOGRAPHY ================= */
         h1, h2, h3 { color: var(--color-white); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         .section-title { text-align: center; font-size: clamp(24px, 5vw, 36px); margin-bottom: 50px; position: relative; }
         .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--color-primary); margin: 15px auto 0; border-radius: 2px; }
 
-        /* ================= LAYOUT ================= */
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         section { padding: 80px 0; }
 
-        /* ================= HEADER ================= */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); transition: var(--transition-smooth); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; width: 90%; max-width: 1200px; margin: 0 auto; }
         
@@ -110,7 +105,6 @@
         .nav-links a:hover::after { width: 100%; }
         .menu-toggle { display: none; font-size: 24px; color: var(--color-white); cursor: pointer; line-height: 1; }
 
-        /* Header Hızlı Bağlan Butonu */
         .header-btn {
             background: linear-gradient(135deg, var(--color-primary), #450a0a);
             color: var(--color-white);
@@ -133,7 +127,6 @@
             background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
         }
 
-        /* ================= HERO ================= */
         .hero { min-height: 100vh; min-height: 100svh; min-height: 100dvh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 75px; margin-top: 0; }
         .hero::before { display: none; }
         .hero-content { position: relative; z-index: 2; width: 100%; max-width: 800px; padding: 0 20px; }
@@ -151,57 +144,140 @@
         .btn-connect { display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, var(--color-primary), #450a0a); color: var(--color-white); padding: 18px 45px; border-radius: 8px; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,100,100,0.2); transition: var(--transition-smooth); }
         .btn-connect:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(153, 27, 27, 0.5); background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); }
         
-        /* ================= AŞAĞI KAYDIRMA BUTONU ================= */
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            border-radius: 8px;
+            font-size: 20px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(153, 27, 27, 0.5);
+            animation: bounceDown 1.5s infinite ease-in-out;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
 
-    width: 45px;
-    height: 45px;
+        .scroll-indicator:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            border-color: rgba(255, 100, 100, 0.4);
+            box-shadow: 0 8px 25px rgba(153, 27, 27, 0.6);
+            color: var(--color-white);
+        }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        @keyframes bounceDown {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
 
-    background: linear-gradient(135deg, var(--color-primary), #450a0a);
-    color: var(--color-white);
+            50% {
+                transform: translate(-50%, 8px);
+            }
+        }
 
-    border: 1px solid rgba(255, 100, 100, 0.2);
-    border-radius: 8px;
+        .top-players-section {
+            padding: 65px 0 75px;
+        }
 
-    font-size: 20px;
+        .top-players-section .section-title {
+            margin-bottom: 45px;
+        }
 
-    z-index: 10;
+        .top-3-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.12fr 1fr;
+            align-items: end;
+            gap: 18px;
+        }
 
-    box-shadow: 0 5px 15px rgba(153, 27, 27, 0.5);
+        .top-player {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+            min-height: 145px;
+            padding: 25px 18px 22px;
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.72), rgba(8, 8, 8, 0.82));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
 
-    animation: bounceDown 1.5s infinite ease-in-out;
+        .top-player::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--player-color);
+        }
 
-    text-decoration: none;
+        .top-player:hover {
+            transform: translateY(-6px);
+            border-color: var(--player-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
 
-    transition: var(--transition-smooth);
-}
+        .top-player.first {
+            min-height: 180px;
+            --player-color: #facc15;
+            border-color: rgba(250, 204, 21, 0.18);
+        }
 
-.scroll-indicator:hover {
-    background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
-    border-color: rgba(255, 100, 100, 0.4);
-    box-shadow: 0 8px 25px rgba(153, 27, 27, 0.6);
-    color: var(--color-white);
-}
+        .top-player.second {
+            --player-color: #d1d5db;
+        }
 
-@keyframes bounceDown {
-    0%, 100% {
-        transform: translate(-50%, 0);
-    }
+        .top-player.third {
+            --player-color: #b87333;
+        }
 
-    50% {
-        transform: translate(-50%, 8px);
-    }
-}
+        .top-player-rank {
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
 
-        /* ================= KARTLAR ================= */
+        .top-player.first .top-player-rank {
+            font-size: 38px;
+        }
+
+        .top-player-name {
+            width: 100%;
+            color: var(--color-white);
+            font-size: clamp(13px, 1.7vw, 17px);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .top-player.first .top-player-name {
+            font-size: clamp(14px, 1.9vw, 19px);
+        }
+
+        .top-player-name.loading {
+            color: #777;
+            font-weight: 600;
+        }
+
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 40px 30px; text-align: center; backdrop-filter: blur(10px); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; }
         .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-primary); transform: scaleX(0); transition: var(--transition-smooth); transform-origin: left; }
@@ -214,7 +290,6 @@
         .feature-card .card-btn { margin-top: auto; display: inline-block; padding: 12px 25px; background: linear-gradient(135deg, var(--color-primary), #450a0a); border: 1px solid rgba(255,100,100,0.2); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--color-white); transition: var(--transition-smooth); width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .feature-card:hover .card-btn, .feature-card .card-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
 
-        /* ================= TIKLANABİLİR KARTLAR ================= */
         .preview-card-link {
             display: block;
             text-decoration: none;
@@ -222,7 +297,6 @@
             cursor: pointer;
         }
 
-        /* ================= SERVER INFO ================= */
         .server-info-bg { background: transparent; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .info-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 30px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; backdrop-filter: blur(10px); }
@@ -230,7 +304,6 @@
         .info-item span.label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
         .info-item span.value { font-size: 18px; font-weight: 700; color: var(--color-white); }
 
-        /* ================= HAKKINDA BÖLÜMÜ ================= */
         .about-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -251,12 +324,10 @@
             margin-bottom: 0;
         }
         
-        /* ================= COMMUNITY ================= */
         .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(255,100,100,0.2); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
         .social-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
 
-        /* ================= ANNOUNCEMENTS & PREVIEW CARDS ================= */
         .empty-state { text-align: center; padding: 60px 20px; background: var(--glass-bg); border: 1px dashed var(--glass-border); border-radius: 12px; max-width: 600px; margin: 0 auto; }
         .empty-state i { font-size: 32px; color: #444; margin-bottom: 15px; }
         .empty-state p { font-size: 16px; color: #888; font-weight: 500; }
@@ -325,7 +396,6 @@
             box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4);
         }
 
-        /* ================= FOOTER ================= */
         footer { background: rgba(5, 5, 5, 0.8); padding: 40px 0 20px 0; text-align: center; border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
         .footer-logo { font-size: 18px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; margin-bottom: 10px; }
         .footer-logo span { color: var(--color-primary); }
@@ -337,7 +407,6 @@
 
         .footer-copyright { font-size: 12px; color: #555; letter-spacing: 1px; border-top: 1px solid #111; padding-top: 20px; }
 
-        /* ================= ANIMATION & RESPONSIVE ================= */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         
@@ -358,22 +427,58 @@
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; }
             section { padding: 60px 0; }
             
-            /* Hakkında Kartı Mobil Düzeni */
+            .top-players-section {
+                padding: 55px 0 60px;
+            }
+
+            .top-players-section .section-title {
+                margin-bottom: 35px;
+            }
+
+            .top-3-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 8px;
+                align-items: end;
+                width: 94%;
+            }
+
+            .top-player,
+            .top-player.first {
+                min-height: 125px;
+                padding: 18px 8px 16px;
+                border-radius: 10px;
+            }
+
+            .top-player.first {
+                min-height: 150px;
+            }
+
+            .top-player-rank {
+                font-size: 25px;
+                margin-bottom: 14px;
+            }
+
+            .top-player.first .top-player-rank {
+                font-size: 32px;
+            }
+
+            .top-player-name,
+            .top-player.first .top-player-name {
+                font-size: 11px;
+                letter-spacing: 0;
+            }
+
             .about-card { padding: 25px; }
             .about-card p { font-size: 15px; }
 
             .footer-links { flex-direction: column; gap: 10px; }
 
-            /* Mobilde gizlenecek PC butonları */
             .header-btn, 
             .btn-connect { 
                 display: none !important; 
             }
         }
 
-        /* ================= YENİ EKLENEN ÖZELLİKLER (SCROLL, PROGRESS BAR, SCROLL TO TOP, SCROLLSPY) ================= */
-
-        /* Temaya Bütünleşik Kaydırma Çubuğu */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -388,7 +493,6 @@
             background: var(--color-primary-hover);
         }
 
-        /* Sayfa İlerleme Çubuğu */
         .scroll-progress-container {
             position: fixed;
             top: 0;
@@ -396,17 +500,16 @@
             width: 100%;
             height: 3px;
             background: transparent;
-            z-index: 1001; /* Header'dan (1000) yüksek olmalı */
+            z-index: 1001;
         }
         .scroll-progress-bar {
             height: 100%;
             width: 0%;
-            background: var(--color-accent); /* Kırmızı renk */
+            background: var(--color-accent);
             box-shadow: 0 0 10px var(--color-accent);
             transition: width 0.1s ease-out;
         }
 
-        /* Yukarı Çık Butonu */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
@@ -439,7 +542,6 @@
             box-shadow: 0 5px 15px rgba(153, 27, 27, 0.5);
         }
 
-        /* Akıllı Menü Vurgusu İçin Ek Sınıf */
         .nav-links a.active {
             color: var(--color-white);
         }
@@ -498,6 +600,28 @@
             <a href="#istatistikler" class="scroll-indicator">
                 <i class="fas fa-arrow-down"></i>
             </a>
+        </section>
+
+        <section id="top-oyuncular" class="top-players-section">
+            <div class="container">
+                <h2 class="section-title fade-in">🏆 SUNUCUNUN EN İYİLERİ</h2>
+                <div class="top-3-grid">
+                    <div class="top-player second fade-in delay-1">
+                        <div class="top-player-rank">🥈</div>
+                        <div class="top-player-name loading" id="top2">Yükleniyor...</div>
+                    </div>
+
+                    <div class="top-player first fade-in">
+                        <div class="top-player-rank">🥇</div>
+                        <div class="top-player-name loading" id="top1">Yükleniyor...</div>
+                    </div>
+
+                    <div class="top-player third fade-in delay-2">
+                        <div class="top-player-rank">🥉</div>
+                        <div class="top-player-name loading" id="top3">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="istatistikler">
@@ -716,10 +840,40 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Yılı Dinamik Olarak Güncelle
             document.getElementById("year").textContent = new Date().getFullYear();
+
+            const top1 = document.getElementById('top1');
+            const top2 = document.getElementById('top2');
+            const top3 = document.getElementById('top3');
+
+            fetch('https://cs16-stats.onrender.com/api/top3')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Top 3 verileri alınamadı.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const players = Array.isArray(data.players) ? data.players : [];
+
+                    top1.textContent = players[0] || '—';
+                    top2.textContent = players[1] || '—';
+                    top3.textContent = players[2] || '—';
+
+                    top1.classList.remove('loading');
+                    top2.classList.remove('loading');
+                    top3.classList.remove('loading');
+                })
+                .catch(() => {
+                    top1.textContent = '—';
+                    top2.textContent = '—';
+                    top3.textContent = '—';
+
+                    top1.classList.remove('loading');
+                    top2.classList.remove('loading');
+                    top3.classList.remove('loading');
+                });
             
-            // 1. Mobil Menü Kontrolü
             const mobileMenuBtn = document.getElementById('mobile-menu');
             const navLinks = document.getElementById('nav-links');
             
@@ -735,7 +889,6 @@
                 }
             });
 
-            // Mobil menü link tıklaması ile kapanma durumu
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -745,7 +898,6 @@
                 });
             });
 
-            // 2. Sayfa İçi Scroll Animasyonları (Intersection Observer)
             const fadeElements = document.querySelectorAll('.fade-in');
             const observerOptions = {
                 root: null,
@@ -766,7 +918,6 @@
                 fadeObserver.observe(el);
             });
 
-            // 3. Header Arka Plan Efekti (Sticky Header Şeffaflığı)
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
@@ -778,7 +929,6 @@
                 }
             });
 
-            // ================= 4. SAYFA İLERLEME ÇUBUĞU =================
             const progressBar = document.getElementById('progressBar');
 
             window.addEventListener('scroll', () => {
@@ -789,7 +939,6 @@
                 progressBar.style.width = scrollPercentage + '%';
             });
 
-            // ================= 1. YUKARI ÇIK BUTONU =================
             const scrollToTopBtn = document.getElementById('scrollToTop');
 
             window.addEventListener('scroll', () => {
@@ -808,7 +957,6 @@
                 });
             });
 
-            // ================= 2. AKILLI MENÜ VURGUSU (SCROLLSPY) =================
             const sections = document.querySelectorAll('section');
             const navItems = document.querySelectorAll('.nav-links a');
 
@@ -819,7 +967,6 @@
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
                     
-                    // Header yüksekliğini (75px) hesaba katarak konumu belirle
                     if (scrollY >= (sectionTop - 85)) {
                         current = section.getAttribute('id');
                     }
@@ -827,16 +974,12 @@
 
                 navItems.forEach(item => {
                     item.classList.remove('active');
-                    // Eğer href içindeki ID, mevcut section ID'si ile eşleşiyorsa active yap
                     if (item.getAttribute('href').includes(current) && current !== '') {
                         item.classList.add('active');
                     }
                 });
             });
 
-            // ================= 3. ADRES ÇUBUĞUNDA HASH (#) GİZLEME =================
-            
-            // Sayfaya ilk girildiğinde linkte hash varsa (örn: site.com/#kurallar) bunu gizle
             if (window.location.hash) {
                 setTimeout(() => {
                     history.replaceState(null, null, window.location.pathname + window.location.search);
@@ -853,7 +996,6 @@
                         e.preventDefault();
                         targetElement.scrollIntoView({ behavior: 'smooth' });
                         
-                        // İsteğe bağlı olarak geçmişte veya manuel girişte URL'ye eklendiyse temizler
                         history.replaceState(null, null, window.location.pathname + window.location.search);
                     }
                 });
