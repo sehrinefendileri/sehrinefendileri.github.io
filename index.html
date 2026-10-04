@@ -129,14 +129,15 @@
         }
 
         .hero { 
-            min-height: auto; 
+            min-height: 100vh;
+            min-height: 100svh;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
             position: relative; 
-            padding-top: 85px; 
-            padding-bottom: 50px; 
+            padding-top: 75px; 
+            padding-bottom: 0; 
             margin-top: 0; 
         }
         .hero::before { display: none; }
@@ -154,7 +155,7 @@
         
         .scroll-indicator {
             position: absolute;
-            bottom: 10px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
             width: 45px;
@@ -191,7 +192,7 @@
         }
 
         .top-players-section {
-            padding: 10px 0 85px;
+            padding: 70px 0 85px;
         }
 
         .top-players-section .container {
@@ -457,7 +458,7 @@
             .nav-links a::after { display: none; }
             .menu-toggle { display: block; }
             
-            .hero { min-height: auto; padding-top: 100px; padding-bottom: 80px; }
+            .hero { min-height: 100vh; min-height: 100svh; padding-top: 75px; padding-bottom: 0; }
             .hero-content { max-width: 100%; margin-top: 0; }
             .hero h1 { letter-spacing: 4px; }
             .hero-desc { max-width: 100%; }
@@ -466,7 +467,7 @@
             section { padding: 60px 0; }
             
             .top-players-section {
-                padding: 20px 0 70px;
+                padding: 60px 0 70px;
             }
 
             .top-players-section .section-title {
