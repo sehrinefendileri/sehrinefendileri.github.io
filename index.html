@@ -153,69 +153,79 @@
         .server-ip-box i { color: var(--color-accent); font-size: 20px; }
         .server-ip-box span { font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; }
 
-        .server-status-line {
+        .server-status-badge {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 18px;
-            padding: 14px 24px;
-            border: 1px solid rgba(139, 28, 28, 0.55);
-            border-radius: 14px;
-            background: rgba(0, 0, 0, 0.55);
-            box-shadow:
-                0 0 18px rgba(139, 28, 28, 0.18),
-                inset 0 0 18px rgba(255, 255, 255, 0.025);
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 0.6px;
-            color: #d8d8d8;
-            backdrop-filter: blur(4px);
-        }
-
-        .server-status-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
-
-        .server-status-dot {
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
             font-size: 14px;
+            font-weight: 600;
+            margin-top: 18px;
         }
 
-        .server-status-online {
-            color: #4ade80;
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .server-status-online .server-status-dot {
-            animation: serverOnlinePulse 1.8s ease-in-out infinite;
-            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+            animation: pulse 2s infinite;
         }
 
-        .server-status-offline {
-            color: #f87171;
-        }
-
-        .server-status-offline .server-status-dot {
-            text-shadow: 0 0 8px rgba(248, 113, 113, 0.7);
-        }
-
-        .server-status-separator {
-            color: #777;
-            font-size: 13px;
-        }
-
-        @keyframes serverOnlinePulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
             }
-
-            50% {
-                opacity: 0.45;
-                transform: scale(0.82);
+            70% {
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
             }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .status-text {
+            letter-spacing: 1px;
+            color: #22c55e;
+        }
+
+        .status-divider {
+            width: 1px;
+            height: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .players-info {
+            gap: 10px;
+        }
+
+        .player-bar {
+            width: 50px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .player-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4d4d, #cc0000);
+            border-radius: 3px;
+            transition: width 0.4s ease-out;
         }
         
         .scroll-indicator {
@@ -530,13 +540,19 @@
             
             .server-ip-box { flex-direction: column; gap: 5px; padding: 15px 20px; border-radius: 12px; margin-bottom: 0; }
 
-            .server-status-line {
+            .server-status-badge {
                 gap: 9px;
                 margin-top: 15px;
                 padding: 11px 14px;
                 font-size: 13px;
                 letter-spacing: 0.3px;
                 border-radius: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .status-divider {
+                display: none;
             }
 
             section { padding: 60px 0; }
@@ -712,23 +728,28 @@
                     <span>SUNUCU IP 95.173.173.81:27015</span>
                 </div>
 
-                <div class="server-status-line" id="server-status-line">
-                    <span class="server-status-item server-status-online" id="server-status">
-                        <span class="server-status-dot">●</span>
-                        ONLINE
-                    </span>
+                <div class="server-status-badge" id="server-status-line">
+                    <div class="status-item" id="server-status">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">ONLINE</span>
+                    </div>
 
-                    <span class="server-status-separator">•</span>
+                    <div class="status-divider"></div>
 
-                    <span class="server-status-item" id="server-players">
-                        👥 Yükleniyor...
-                    </span>
+                    <div class="status-item players-info">
+                        <i class="fa-solid fa-users"></i>
+                        <span id="server-players-text">Yükleniyor...</span>
+                        <div class="player-bar">
+                            <div class="player-bar-fill" id="server-player-bar-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
 
-                    <span class="server-status-separator">•</span>
+                    <div class="status-divider"></div>
 
-                    <span class="server-status-item" id="server-map">
-                        🗺️ Yükleniyor...
-                    </span>
+                    <div class="status-item">
+                        <i class="fa-solid fa-map"></i>
+                        <span id="server-map-text">Yükleniyor...</span>
+                    </div>
                 </div>
             </div>
             
@@ -1024,8 +1045,9 @@
             setInterval(updateTopPlayers, 30000);
 
             const serverStatus = document.getElementById('server-status');
-            const serverPlayers = document.getElementById('server-players');
-            const serverMap = document.getElementById('server-map');
+            const serverPlayersText = document.getElementById('server-players-text');
+            const serverPlayerBarFill = document.getElementById('server-player-bar-fill');
+            const serverMapText = document.getElementById('server-map-text');
             const serverStatusDetail = document.getElementById('server-status-detail');
 
             const serverApiUrl = 'https://tracker.oyunyoneticisi.com/api.php?ip=95.173.173.81&port=27015';
@@ -1036,7 +1058,6 @@
                         if (!response.ok) {
                             throw new Error('Sunucu API yanıt vermedi.');
                         }
-
                         return response.json();
                     })
                     .then(data => {
@@ -1047,37 +1068,41 @@
                         const server = data.server;
 
                         if (server.status === 'online') {
-                            serverStatus.innerHTML = '<span class="server-status-dot">●</span> ONLINE';
-                            serverStatus.classList.remove('server-status-offline');
-                            serverStatus.classList.add('server-status-online');
+                            serverStatus.innerHTML = '<span class="pulse-dot"></span><span class="status-text">ONLINE</span>';
+                            
+                            serverPlayersText.textContent = `${server.players} / ${server.playersmax}`;
+                            let percent = (server.players / server.playersmax) * 100;
+                            if(percent > 100) percent = 100;
+                            serverPlayerBarFill.style.width = `${percent}%`;
 
-                            serverPlayers.textContent = `👥 ${server.players} / ${server.playersmax} OYUNCU`;
-                            serverMap.textContent = `🗺️ ${server.map}`;
+                            serverMapText.textContent = `${server.map}`;
 
                             serverStatusDetail.textContent = 'ONLINE';
                             serverStatusDetail.style.color = '#4ade80';
                         } else {
-                            serverStatus.innerHTML = '<span class="server-status-dot">●</span> OFFLINE';
-                            serverStatus.classList.remove('server-status-online');
-                            serverStatus.classList.add('server-status-offline');
+                            serverStatus.innerHTML = '<span class="pulse-dot" style="background-color: #f87171; animation: none; box-shadow: none;"></span><span class="status-text" style="color: #f87171;">OFFLINE</span>';
+                            
+                            serverPlayersText.textContent = `0 / ${server.playersmax || 32}`;
+                            serverPlayerBarFill.style.width = `0%`;
 
-                            serverPlayers.textContent = `👥 0 / ${server.playersmax || 32} OYUNCU`;
-                            serverMap.textContent = '🗺️ Sunucu kapalı';
+                            serverMapText.textContent = 'Sunucu kapalı';
 
                             serverStatusDetail.textContent = 'OFFLINE';
                             serverStatusDetail.style.color = '#f87171';
                         }
                     })
                     .catch(() => {
-                        serverStatus.innerHTML = '<span class="server-status-dot">●</span> OFFLINE';
-                        serverStatus.classList.remove('server-status-online');
-                        serverStatus.classList.add('server-status-offline');
+                        serverStatus.innerHTML = '<span class="pulse-dot" style="background-color: #f87171; animation: none; box-shadow: none;"></span><span class="status-text" style="color: #f87171;">OFFLINE</span>';
+                        
+                        if(serverPlayersText) serverPlayersText.textContent = 'Ulaşılamıyor';
+                        if(serverPlayerBarFill) serverPlayerBarFill.style.width = `0%`;
+                        
+                        if(serverMapText) serverMapText.textContent = '—';
 
-                        serverPlayers.textContent = '👥 Sunucuya ulaşılamıyor';
-                        serverMap.textContent = '🗺️ —';
-
-                        serverStatusDetail.textContent = 'OFFLINE';
-                        serverStatusDetail.style.color = '#f87171';
+                        if(serverStatusDetail) {
+                            serverStatusDetail.textContent = 'OFFLINE';
+                            serverStatusDetail.style.color = '#f87171';
+                        }
                     });
             }
 
