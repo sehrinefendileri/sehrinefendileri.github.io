@@ -169,6 +169,12 @@
             border-radius: 50px; 
             margin-bottom: 20px; 
             backdrop-filter: blur(5px); 
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .server-ip-box:hover {
+            border-color: rgba(239, 68, 68, 0.4);
+            transform: translateY(-2px);
         }
         .server-ip-box i { color: var(--color-accent); font-size: 20px; }
         .server-ip-box span { font-size: 22px; font-weight: 800; color: var(--color-white); letter-spacing: 2px; }
@@ -520,7 +526,7 @@
             box-shadow: 0 6px 20px rgba(153, 27, 27, 0.5);
             border-color: rgba(255, 100, 100, 0.4);
         }
-        
+
         .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(255,100,100,0.2); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
         .social-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
@@ -788,9 +794,9 @@
                 <h1>ŞEHRİN EFENDİLERİ</h1>
                 <p class="hero-desc">Counter-Strike 1.6 sunucumuz için geliştirilen oyuncu platformunda sıralamaları takip edin, oyuncuları karşılaştırın, oyuncu kartlarını görüntüleyin ve topluluğumuzdaki gelişmeleri takip edin.</p>
                 
-                <div class="server-ip-box">
+                <div class="server-ip-box" id="copy-ip-btn">
                     <i class="fas fa-server"></i>
-                    <span>SUNUCU IP 95.173.173.81:27015</span>
+                    <span id="ip-text">SUNUCU IP 95.173.173.81:27015</span>
                 </div>
 
                 <div class="server-status-badge" id="server-status-line">
@@ -1060,6 +1066,20 @@
                 });
             }
 
+            const copyIpBtn = document.getElementById('copy-ip-btn');
+            const ipText = document.getElementById('ip-text');
+            if (copyIpBtn && ipText) {
+                copyIpBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText('95.173.173.81:27015').then(() => {
+                        const originalText = ipText.textContent;
+                        ipText.textContent = 'IP KOPYALANDI!';
+                        setTimeout(() => {
+                            ipText.textContent = originalText;
+                        }, 2000);
+                    });
+                });
+            }
+
             const top1 = document.getElementById('top1');
             const top2 = document.getElementById('top2');
             const top3 = document.getElementById('top3');
@@ -1206,6 +1226,15 @@
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
                 });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             });
 
             const fadeElements = document.querySelectorAll('.fade-in');
