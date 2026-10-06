@@ -491,6 +491,36 @@
             margin-bottom: 0;
         }
         
+        .all-announcements-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn-all-announcements {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-all-announcements:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(153, 27, 27, 0.5);
+            border-color: rgba(255, 100, 100, 0.4);
+        }
+        
         .community-socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 220px; padding: 15px 0; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 1px; color: var(--color-white); transition: var(--transition-smooth); border: 1px solid rgba(255,100,100,0.2); background: linear-gradient(135deg, var(--color-primary), #450a0a); }
         .social-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); border-color: rgba(255,100,100,0.4); transform: translateY(-4px); box-shadow: 0 6px 20px rgba(153, 27, 27, 0.4); }
@@ -519,7 +549,7 @@
 
         @media (max-width: 768px) {
             .nav-right { gap: 12px; }
-            .header-btn { padding: 6px 10px; font-size: 11px; letter-spacing: 0.5px; display: inline-flex !important; }
+            .header-btn { display: none !important; }
             .nav-links { position: absolute; top: 75px; left: 0; width: 100%; background: rgba(5, 5, 5, 0.98); flex-direction: column; gap: 0; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; border-bottom: 1px solid var(--glass-border); align-items: stretch; margin-right: 0; }
             .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
             .nav-links li { display: block; width: 100%; }
@@ -527,7 +557,12 @@
             .nav-links a::after { display: none; }
             .menu-toggle { display: block; }
             
-            .hero { min-height: 100vh; min-height: 100svh; padding-top: 75px; padding-bottom: 0; }
+            .hero { 
+                min-height: auto; 
+                padding-top: 95px; 
+                padding-bottom: 40px; 
+                flex-direction: column;
+            }
             .hero-content { max-width: 100%; margin-top: 0; }
             .hero h1 { letter-spacing: 4px; }
             .hero-desc { max-width: 100%; }
@@ -566,6 +601,24 @@
             .player-bar {
                 max-width: 160px;
                 margin-top: 6px;
+            }
+
+            .scroll-indicator {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                margin-top: 25px;
+                animation: bounceDownMobile 1.5s infinite ease-in-out;
+            }
+
+            @keyframes bounceDownMobile {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(8px);
+                }
             }
 
             section { padding: 60px 0; }
@@ -1222,14 +1275,14 @@
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (scrollY >= (sectionTop - 85)) {
+                    if (window.scrollY >= (sectionTop - 85)) {
                         current = section.getAttribute('id');
                     }
                 });
 
                 navItems.forEach(item => {
                     item.classList.remove('active');
-                    if (item.getAttribute('href').includes(current) && current !== '') {
+                    if (item.getAttribute('href') === '#' + current && current !== '') {
                         item.classList.add('active');
                     }
                 });
