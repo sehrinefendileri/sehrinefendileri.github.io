@@ -1,220 +1,540 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="tr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Ekibi | ŞEHRİN EFENDİLERİ</title>
 
-<title>Admin Ekibi | ŞEHRİN EFENDİLERİ</title>
+    <meta name="description" content="Şehrin Efendileri Counter-Strike 1.6 sunucusunun resmî admin kadrosu.">
 
-<meta name="description" content="Şehrin Efendileri Counter-Strike 1.6 sunucusunun resmî admin kadrosu.">
+    <meta name="theme-color" content="#050505">
+    <link rel="icon" type="image/jpeg" href="banner.jpg">
 
-<link rel="icon" href="banner.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ================= GENEL ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
 
-<style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+        body {
+            background:
+                linear-gradient(
+                    rgba(5, 5, 5, 0.65),
+                    rgba(5, 5, 5, 0.75)
+                ),
+                url("banner.jpg") center center / cover fixed no-repeat;
+            background-color: #050505;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-body{
-    background:
-        linear-gradient(
-            rgba(5, 5, 5, 0.65),
-            rgba(5, 5, 5, 0.75)
-        ),
-        url("banner.jpg") center center / cover fixed no-repeat;
-    background-color: #050505;
-    color: #fff;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-header{
-background:#111;
-padding:25px;
-text-align:center;
-border-bottom:2px solid #7f1d1d;
-}
+        /* ================= ÜST MENÜ ================= */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
 
-header h1{
-font-size:38px;
-letter-spacing:3px;
-}
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 25px;
+        }
 
-header p{
-margin-top:10px;
-color:#bbb;
-}
+        .logo {
+            flex-shrink: 0;
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            white-space: nowrap;
+        }
 
-.container{
-max-width:900px;
-margin:60px auto;
-padding:0 20px;
-}
+        .logo span {
+            color: #7f1d1d;
+        }
 
-.card{
-background:linear-gradient(135deg,#111 0%,#0d0d0d 100%);
-border-left:5px solid #991b1b;
-padding:30px;
-border-radius:10px;
-margin-bottom:30px;
-box-shadow:
-0 10px 25px rgba(0,0,0,.35),
-inset 0 1px 0 rgba(255,255,255,.025);
-}
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: clamp(15px, 2vw, 30px);
+        }
 
-.card h2{
-position:relative;
-margin-bottom:24px;
-padding-bottom:14px;
-font-size:24px;
-font-weight:700;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#dc2626;
-text-shadow:0 0 12px rgba(220,38,38,.18);
-border-bottom:1px solid #2a2a2a;
-}
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 1.5vw, 25px);
+            list-style: none;
+        }
 
-.card h2::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-1px;
-width:55px;
-height:3px;
-background:#dc2626;
-border-radius:3px;
-box-shadow:0 0 8px rgba(220,38,38,.45);
-}
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
 
-.member{
-padding:12px 0;
-border-bottom:1px solid #222;
-font-size:17px;
-color:#ddd;
-}
+        .nav-links a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            color: #d1d5db;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
 
-.member:last-child{
-border-bottom:none;
-}
+        .nav-links a:hover {
+            color: #fff;
+        }
 
-.back{
-text-align:center;
-margin:60px 0;
-}
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ef4444;
+            transition: width 0.3s ease;
+        }
 
-.back a{
-display:inline-block;
-padding:14px 28px;
-background:#7f1d1d;
-color:#fff;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-transition:.3s;
-}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-.back a:hover{
-background:#991b1b;
-}
+        .header-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #7f1d1d, #450a0a);
+            color: #fff;
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
 
-footer{
-padding:35px;
-text-align:center;
-color:#777;
-border-top:1px solid #222;
-}
+        .header-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.5);
+            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        }
 
-</style>
+        .menu-toggle {
+            display: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
 
+        /* ================= ADMİN KARTLARI ================= */
+        .container {
+            max-width: 900px;
+            margin: 110px auto 60px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #111 0%, #0d0d0d 100%);
+            border-left: 5px solid #991b1b;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.025);
+        }
+
+        .card h2 {
+            position: relative;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #dc2626;
+            text-shadow: 0 0 12px rgba(220, 38, 38, 0.18);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .card h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 42px;
+            height: 3px;
+            background: #dc2626;
+            border-radius: 3px;
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.45);
+        }
+
+        .member {
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+            font-size: 17px;
+            color: #ddd;
+        }
+
+        .member:last-child {
+            border-bottom: none;
+        }
+
+        /* ================= ANA SAYFAYA DÖN ================= */
+        .back {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .back a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: #7f1d1d;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back a:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.35);
+        }
+
+        /* ================= ALT BİLGİ ================= */
+        footer {
+            padding: 35px 20px;
+            text-align: center;
+            color: #777;
+            background: #050505;
+            border-top: 1px solid #222;
+            font-size: 13px;
+        }
+
+        /* ================= MOBİL UYUMLULUK ================= */
+        @media (max-width: 1100px) {
+            .nav-container {
+                width: 94%;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 19px;
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+                letter-spacing: 0.5px;
+            }
+
+            .header-btn {
+                padding: 9px 12px;
+                font-size: 11px;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 75px;
+                width: 90%;
+            }
+
+            .logo {
+                font-size: clamp(16px, 4vw, 21px);
+                letter-spacing: 1px;
+            }
+
+            .nav-right {
+                gap: 15px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-btn {
+                display: none;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                max-height: calc(100vh - 75px);
+                overflow-y: auto;
+                background: rgba(5, 5, 5, 0.98);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                text-align: center;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                visibility: hidden;
+                transition: clip-path 0.3s ease, visibility 0.3s ease;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                visibility: visible;
+            }
+
+            .nav-links li {
+                display: block;
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 17px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 13px;
+                white-space: normal;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .container {
+                margin-top: 105px;
+                padding: 0 16px;
+            }
+
+            .card {
+                padding: 24px 20px;
+                margin-bottom: 22px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+            .member {
+                font-size: 15px;
+                overflow-wrap: anywhere;
+            }
+
+            .back {
+                margin: 40px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
+    <!-- ================= ÜST MENÜ ================= -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">Şehrin<span>Efendileri</span></a>
 
-<h1>ŞEHRİN EFENDİLERİ</h1>
+            <div class="nav-right">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/#istatistikler">İstatistikler</a></li>
+                    <li><a href="/#oyuncu-araclari">Oyuncu Araçları</a></li>
+                    <li><a href="/#sunucu-bilgileri">Sunucu</a></li>
+                    <li><a href="/#admin-ekibi">Admin Ekibi</a></li>
+                    <li><a href="/#topluluk">Topluluk</a></li>
+                    <li><a href="/#duyurular">Duyurular</a></li>
+                </ul>
 
-<p>ADMİN EKİBİ</p>
+                <a href="steam://connect/95.173.173.81:27015" class="header-btn">
+                    Sunucuya Bağlan
+                </a>
 
-</header>
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Menüyü aç veya kapat"
+                    aria-controls="nav-links"
+                    aria-expanded="false"
+                >
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-<div class="container">
+    <!-- ================= ADMİN EKİBİ ================= -->
+    <main>
+        <div class="container">
 
-<div class="card">
+            <div class="card">
+                <h2>Kurucu</h2>
+                <div class="member">| EFENDI | LEVENT</div>
+            </div>
 
-<h2>Kurucu</h2>
+            <div class="card">
+                <h2>Sunucu Sorumlusu</h2>
+                <div class="member">| EFENDI | AEK</div>
+            </div>
 
-<div class="member">| EFENDI | LEVENT</div>
+            <div class="card">
+                <h2>İletişim Sorumlusu</h2>
+                <div class="member">| EFENDI | godfather</div>
+            </div>
 
-</div>
+            <div class="card">
+                <h2>Maç Kaptanları</h2>
+                <div class="member">| EFENDI | PAPİ</div>
+                <div class="member">| EFENDI | Lovethe90svibe*</div>
+                <div class="member">| EFENDI | SKaNDaL</div>
+            </div>
 
-<div class="card">
+            <div class="card">
+                <h2>Admin Kadrosu</h2>
+                <div class="member">| EFENDI | CCC</div>
+                <div class="member">| EFENDI | NRLLMX</div>
+                <div class="member">| EFENDI | KUSCU</div>
+                <div class="member">| EFENDI | C-hr</div>
+                <div class="member">| EFENDI | Kazanlii</div>
+                <div class="member">| EFENDI | AnTuAn</div>
+                <div class="member">| EFENDI | Bankai'*</div>
+                <div class="member">| EFENDI | HAYALETKATIL</div>
+                <div class="member">| EFENDI | BurakBT</div>
+            </div>
 
-<h2>Sunucu Sorumlusu</h2>
+            <div class="back">
+                <a href="/">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    Ana Sayfaya Dön
+                </a>
+            </div>
 
-<div class="member">| EFENDI | AEK</div>
+        </div>
+    </main>
 
-</div>
+    <!-- ================= ALT BİLGİ ================= -->
+    <footer>
+        © <span id="year">2026</span> ŞEHRİN EFENDİLERİ
+    </footer>
 
-<div class="card">
+    <!-- ================= MENÜ İŞLEVLERİ ================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileMenuBtn = document.getElementById("mobile-menu");
+            const navLinks = document.getElementById("nav-links");
+            const header = document.getElementById("header");
+            const year = document.getElementById("year");
 
-<h2>İletişim Sorumlusu</h2>
+            year.textContent = new Date().getFullYear();
 
-<div class="member">| EFENDI | godfather</div>
+            function closeMenu() {
+                navLinks.classList.remove("active");
+                mobileMenuBtn.setAttribute("aria-expanded", "false");
 
-</div>
+                const icon = mobileMenuBtn.querySelector("i");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
 
-<div class="card">
+            mobileMenuBtn.addEventListener("click", () => {
+                const isOpen = navLinks.classList.toggle("active");
+                mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
 
-<h2>Maç Kaptanları</h2>
+                const icon = mobileMenuBtn.querySelector("i");
 
-<div class="member">| EFENDI | PAPİ</div>
-<div class="member">| EFENDI | Lovethe90svibe*</div>
-<div class="member">| EFENDI | SKaNDaL</div>
+                if (isOpen) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+                } else {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                }
+            });
 
-</div>
+            navLinks.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", closeMenu);
+            });
 
-<div class="card">
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
 
-<h2>Admin Kadrosu</h2>
-
-<div class="member">| EFENDI | CCC</div>
-<div class="member">| EFENDI | NRLLMX</div>
-<div class="member">| EFENDI | KUSCU</div>
-<div class="member">| EFENDI | C-hr</div>
-<div class="member">| EFENDI | Kazanlii</div>
-<div class="member">| EFENDI | AnTuAn</div>
-<div class="member">| EFENDI | Bankai'*</div>
-<div class="member">| EFENDI | HAYALETKATIL</div>
-<div class="member">| EFENDI | BurakBT</div>
-
-</div>
-
-<div class="back">
-
-<a href="index.html">
-
-<i class="fas fa-arrow-left"></i>
-
-Ana Sayfaya Dön
-
-</a>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 ŞEHRİN EFENDİLERİ
-
-</footer>
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    header.style.background = "rgba(0, 0, 0, 0.98)";
+                    header.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.5)";
+                } else {
+                    header.style.background = "rgba(5, 5, 5, 0.85)";
+                    header.style.boxShadow = "none";
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
