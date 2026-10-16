@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -14,14 +13,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* ================= GENEL ================= */
         :root {
             --bg-main: #050505;
             --color-primary: #7f1d1d;
+            --color-primary-hover: #991b1b;
             --color-accent: #ef4444;
             --color-silver: #d1d5db;
             --glass-border: rgba(255, 255, 255, 0.06);
-            --transition-smooth: 0.3s ease;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -38,15 +37,13 @@
 
         body {
             background:
-                linear-gradient(
-                    rgba(5, 5, 5, 0.85),
-                    rgba(5, 5, 5, 0.85)
-                ),
+                linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)),
                 url("banner.jpg") center / cover fixed no-repeat;
             background-color: var(--bg-main);
-            color: #fff;
+            color: var(--color-silver);
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         a {
@@ -58,7 +55,6 @@
             font: inherit;
         }
 
-        /* ================= ÜST MENÜ ================= */
         #header {
             position: fixed;
             top: 0;
@@ -69,9 +65,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
-            transition:
-                background var(--transition-smooth),
-                box-shadow var(--transition-smooth);
+            transition: var(--transition-smooth);
         }
 
         .nav-container {
@@ -118,7 +112,7 @@
             letter-spacing: 1px;
             white-space: nowrap;
             line-height: 1;
-            transition: color 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .nav-links a:hover,
@@ -134,7 +128,7 @@
             width: 0;
             height: 2px;
             background: var(--color-accent);
-            transition: width 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .nav-links a:hover::after,
@@ -148,11 +142,7 @@
             justify-content: center;
             flex-shrink: 0;
             padding: 10px 20px;
-            background: linear-gradient(
-                135deg,
-                var(--color-primary),
-                #450a0a
-            );
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
             color: #fff;
             border: 1px solid rgba(255, 100, 100, 0.2);
             border-radius: 6px;
@@ -161,16 +151,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease,
-                background 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .header-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.45);
-            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+            box-shadow: 0 4px 15px rgba(153, 27, 27, 0.5);
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
         }
 
         .menu-toggle {
@@ -189,7 +176,6 @@
             cursor: pointer;
         }
 
-        /* ================= ADMİN KARTLARI ================= */
         main {
             min-height: calc(100vh - 75px);
         }
@@ -202,18 +188,12 @@
         }
 
         .card {
-            background: linear-gradient(
-                135deg,
-                rgba(15, 15, 15, 0.96),
-                rgba(10, 10, 10, 0.96)
-            );
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.96), rgba(10, 10, 10, 0.96));
             border-left: 5px solid #991b1b;
             padding: 38px 40px;
             border-radius: 11px;
             margin-bottom: 32px;
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.30),
-                inset 0 1px 0 rgba(255, 255, 255, 0.025);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.025);
         }
 
         .card h2 {
@@ -253,7 +233,6 @@
             border-bottom: none;
         }
 
-        /* ================= ANA SAYFAYA DÖN ================= */
         .back {
             text-align: center;
             margin: 55px 0 35px;
@@ -265,34 +244,112 @@
             justify-content: center;
             gap: 9px;
             padding: 14px 28px;
-            background: linear-gradient(135deg, #7f1d1d, #450a0a);
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
             color: #fff;
             border: 1px solid rgba(255, 100, 100, 0.16);
             border-radius: 8px;
             font-weight: 800;
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
+            transition: var(--transition-smooth);
         }
 
         .back a:hover {
-            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(153, 27, 27, 0.35);
         }
 
-        /* ================= ALT BİLGİ ================= */
         footer {
-            padding: 30px 20px;
+            background: rgba(5, 5, 5, 0.8);
+            padding: 40px 0 20px;
             text-align: center;
-            color: #888;
-            background: rgba(5, 5, 5, 0.96);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 13px;
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        /* ================= MOBİL MENÜ ================= */
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo span {
+            color: var(--color-primary);
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: var(--color-silver);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links span,
+        .footer-links a {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #555;
+            letter-spacing: 1px;
+            border-top: 1px solid #111;
+            padding-top: 20px;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--color-primary), #450a0a);
+            color: #fff;
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(153, 27, 27, 0.5);
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 width: 90%;
@@ -331,9 +388,7 @@
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                 visibility: hidden;
                 pointer-events: none;
-                transition:
-                    clip-path 0.4s ease-in-out,
-                    visibility 0.4s ease-in-out;
+                transition: clip-path 0.4s ease-in-out, visibility 0.4s ease-in-out;
             }
 
             .nav-links.active {
@@ -364,9 +419,13 @@
             .container {
                 padding-top: 105px;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
-        /* ================= KÜÇÜK EKRANLAR ================= */
         @media (max-width: 600px) {
             body {
                 background-attachment: scroll;
@@ -412,9 +471,13 @@
             footer {
                 padding: 25px 15px;
             }
+
+            .scroll-to-top {
+                right: 20px;
+                bottom: 20px;
+            }
         }
 
-        /* ================= HAREKETİ AZALT ================= */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -428,8 +491,6 @@
 </head>
 
 <body>
-
-    <!-- ================= ÜST MENÜ ================= -->
     <header id="header">
         <nav class="nav-container" aria-label="Ana menü">
             <div class="nav-right">
@@ -444,10 +505,7 @@
                     <li><a href="/#topluluk">Topluluk</a></li>
                 </ul>
 
-                <a
-                    href="steam://connect/95.173.173.81:27015"
-                    class="header-btn"
-                >
+                <a href="steam://connect/95.173.173.81:27015" class="header-btn">
                     Sunucuya Bağlan
                 </a>
 
@@ -465,10 +523,8 @@
         </nav>
     </header>
 
-    <!-- ================= ADMİN EKİBİ ================= -->
     <main>
         <div class="container">
-
             <section class="card">
                 <h2>Kurucu</h2>
                 <div class="member">| EFENDI | LEVENT</div>
@@ -510,22 +566,37 @@
                     Ana Sayfaya Dön
                 </a>
             </div>
-
         </div>
     </main>
 
-    <!-- ================= ALT BİLGİ ================= -->
     <footer>
-        © <span id="year">2026</span> ŞEHRİN EFENDİLERİ
+        <div class="container" style="padding: 0;">
+            <div class="footer-logo">ŞEHRİN <span>EFENDİLERİ</span></div>
+            <p class="footer-desc">Counter-Strike 1.6 topluluğu ve oyuncu platformu.</p>
+
+            <div class="footer-links">
+                <a href="/#hero">Ana Sayfa</a>
+                <a href="/#hakkimizda">Hakkımızda</a>
+                <a href="kurallar.html">Kurallar</a>
+                <a href="https://discord.gg/8t8bNDrCZg" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="https://www.instagram.com/sehrinefendilerics16/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+
+            <p class="footer-copyright">© 2024 - <span id="year">2026</span> ŞEHRİN EFENDİLERİ</p>
+        </div>
     </footer>
 
-    <!-- ================= MENÜ İŞLEVLERİ ================= -->
+    <a href="#" id="scrollToTop" class="scroll-to-top" aria-label="Yukarı Çık">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </a>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const mobileMenuBtn = document.getElementById("mobile-menu");
             const navLinks = document.getElementById("nav-links");
             const header = document.getElementById("header");
             const year = document.getElementById("year");
+            const scrollToTopBtn = document.getElementById("scrollToTop");
 
             year.textContent = new Date().getFullYear();
 
@@ -575,21 +646,37 @@
             function updateHeader() {
                 if (window.scrollY > 50) {
                     header.style.background = "rgba(0, 0, 0, 0.98)";
-                    header.style.boxShadow =
-                        "0 4px 20px rgba(0, 0, 0, 0.35)";
+                    header.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.8)";
                 } else {
                     header.style.background = "rgba(5, 5, 5, 0.85)";
                     header.style.boxShadow = "none";
                 }
             }
 
-            window.addEventListener("scroll", updateHeader, {
-                passive: true
+            function updateScrollToTop() {
+                if (window.scrollY > 400) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+            }
+
+            window.addEventListener("scroll", updateHeader, { passive: true });
+            window.addEventListener("scroll", updateScrollToTop, { passive: true });
+
+            scrollToTopBtn.addEventListener("click", event => {
+                event.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                        ? "auto"
+                        : "smooth"
+                });
             });
 
             updateHeader();
+            updateScrollToTop();
         });
     </script>
-
 </body>
 </html>
